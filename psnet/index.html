@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>psnet: terminal network monitor for Windows, no Npcap needed</title>
+<meta name="description" content="psnet shows which apps use your network on Windows 10 and 11: traffic graphs, connections with hostnames, a packet inspector, a per app firewall and a LAN scan, in one TUI. No Npcap.">
+<link rel="canonical" href="https://psmux.github.io/psnet/">
+<meta name="theme-color" content="#0a0c0b" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f5f4ef" media="(prefers-color-scheme: light)">
+<meta name="author" content="Godwin Sam Josh">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="psmux">
+<meta property="og:url" content="https://psmux.github.io/psnet/">
+<meta property="og:title" content="psnet: terminal network monitor for Windows, no Npcap needed">
+<meta property="og:description" content="psnet shows which apps use your network on Windows 10 and 11: traffic graphs, connections with hostnames, a packet inspector, a per app firewall and a LAN scan, in one TUI. No Npcap.">
+<meta property="og:image" content="https://psmux.github.io/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="psnet: terminal network monitor for Windows, no Npcap needed">
+<meta name="twitter:description" content="psnet shows which apps use your network on Windows 10 and 11: traffic graphs, connections with hostnames, a packet inspector, a per app firewall and a LAN scan, in one TUI. No Npcap.">
+<meta name="twitter:image" content="https://psmux.github.io/assets/og.png">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="/assets/site.css">
+<script src="/assets/site.js" defer></script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "SoftwareApplication",
+   "name": "psnet",
+   "description": "Terminal network monitor for Windows with nine tabs, a packet inspector and a per app firewall, without Npcap.",
+   "applicationCategory": "UtilitiesApplication",
+   "operatingSystem": "Windows 10, Windows 11",
+   "url": "https://psmux.github.io/psnet/",
+   "softwareVersion": "1.1.0",
+   "license": "https://opensource.org/licenses/MIT",
+   "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+   },
+   "author": {
+    "@type": "Person",
+    "name": "Godwin Sam Josh",
+    "url": "https://psmux.github.io/"
+   },
+   "sameAs": [
+    "https://github.com/psmux/psnet"
+   ]
+  },
+  {
+   "@type": "SoftwareSourceCode",
+   "name": "psnet",
+   "codeRepository": "https://github.com/psmux/psnet",
+   "programmingLanguage": "Rust",
+   "license": "https://opensource.org/licenses/MIT"
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "psmux",
+     "item": "https://psmux.github.io/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "psnet",
+     "item": "https://psmux.github.io/psnet/"
+    }
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Does psnet need Npcap?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "No. It uses built in Windows APIs and raw sockets."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Can it block an app from the internet?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes. The firewall tab blocks and allows apps per application from the TUI."
+     }
+    }
+   ]
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-star" viewBox="0 0 16 16"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"/></symbol>
+  <symbol id="i-gh" viewBox="0 0 16 16"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8.5" y="8.5" width="12" height="12" rx="2"/><path d="M15.5 5.5v-1a1 1 0 0 0-1-1h-10a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h1"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M4.5 12.5l5 5 10-11"/></symbol>
+</svg>
+<a class="skip" href="#main">Skip to content</a>
+<header class="statusline">
+  <nav class="wrap" aria-label="Main">
+    <a class="session" href="/" aria-label="psmux home"><img src="/assets/favicon.svg" alt="" width="22" height="22"><span class="tag">[psmux]</span></a>
+    <ul class="windows">
+      <li><a href="/"><span class="n">0:</span>home</a></li>
+      <li><a href="/#psmux"><span class="n">1:</span>psmux</a></li>
+      <li><a href="/deskvnc/"><span class="n">2:</span>deskvnc</a></li>
+      <li><a href="/godwinmix/"><span class="n">3:</span>godwinmix</a></li>
+      <li><a href="/#tools" aria-current="true"><span class="n">4:</span>tools</a></li>
+    </ul>
+    <div class="status-right">
+      <a class="star-btn" href="https://github.com/psmux" aria-label="psmux on GitHub, total stars">
+        <svg aria-hidden="true"><use href="#i-gh"/></svg>github.com/psmux
+        <span class="count"><span data-total-stars>4,335</span></span>
+      </a>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="page-hero">
+    <div class="wrap">
+      <p class="crumbs"><a href="/">psmux</a> / psnet</p>
+      <h1>psnet</h1>
+      <p class="sub">A terminal network monitor for Windows 10 and 11. Nine tabs in one 12 MB binary, using built in Windows APIs and raw sockets, so it needs no Npcap or WinPcap.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="https://github.com/psmux/psnet"><svg aria-hidden="true"><use href="#i-star"/></svg>Star psnet on GitHub <span class="count" data-stars="psnet">148</span></a>
+        <a class="btn btn-ghost" href="https://github.com/psmux/psnet/releases/latest">Download</a>
+      </div>
+      <ul class="meta-row" aria-label="Platforms and license"><li class="chip os win">Windows 10</li><li class="chip os win">Windows 11</li><li class="chip">MIT</li><li class="chip">v1.1.0</li></ul>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:24px">
+    <div class="wrap cols">
+      <div class="stack">
+        <div class="media-slot" data-media="psnet" data-variant="feature" data-eager>
+          <div class="frame">
+            <div class="ph">
+              <div class="ph-bar"><b>psnet</b><span>capture pending</span></div>
+<pre><span class="pr">PS&gt; </span>winget install marlocarlo.psnet
+<span class="pr">PS&gt; </span>psnet</pre>
+              <dl class="spec"><dt>release</dt><dd>v1.1.0, August 2026</dd><dt>runs on</dt><dd>Windows 10, Windows 11</dd><dt>size</dt><dd>about 12 MB, four databases compiled in</dd><dt>downloads</dt><dd><b>2,854</b> from GitHub releases</dd><dt>license</dt><dd>MIT</dd></dl>
+            </div>
+          </div>
+        </div>
+        <div class="prose">
+        <h2>See which apps use your network</h2>
+        <p>psnet puts a traffic graph, every connection with its hostname and owning process, the servers listening on your machine and a packet inspector in one terminal window. Connections made through svchost show the real service behind them.</p>
+        <h2>No capture driver</h2>
+        <p>Most Windows packet tools need Npcap or WinPcap. psnet uses built in Windows APIs and raw sockets instead. The packet inspector needs an Administrator shell.</p>
+        <h2>Questions</h2>
+        <h3>Does psnet need Npcap?</h3>
+        <p>No. It uses built in Windows APIs and raw sockets.</p>
+        <h3>Can it block an app from the internet?</h3>
+        <p>Yes. The firewall tab blocks and allows apps per application from the TUI.</p>
+        </div>
+      </div>
+      <div>
+        <div class="feature-copy">
+          <span class="kicker">install</span>
+          <div class="install" data-tabs>
+        <div class="install-tabs" role="tablist" aria-label="Install psnet"><button role="tab" aria-selected="true">WinGet</button><button role="tab" aria-selected="false">Cargo</button><button role="tab" aria-selected="false">Binary</button><button role="tab" aria-selected="false">From source</button></div>
+        <div class="cmd" role="tabpanel"><pre><code><span class="pr">PS&gt; </span>winget install marlocarlo.psnet</code></pre></div>
+<div class="cmd" role="tabpanel" hidden><pre><code><span class="pr">PS&gt; </span>cargo install psnet</code></pre></div>
+<div class="cmd" role="tabpanel" hidden><pre><code>https://github.com/psmux/psnet/releases/latest</code></pre></div>
+<div class="cmd" role="tabpanel" hidden><pre><code><span class="pr">PS&gt; </span>git clone https://github.com/psmux/psnet.git
+<span class="pr">PS&gt; </span>cd psnet
+<span class="pr">PS&gt; </span>cargo build --release
+<span class="pr">PS&gt; </span>.\target\release\psnet.exe</code></pre></div>
+      </div>
+          <div class="proof" style="margin-top:22px"><div><b>9</b><span>tabs in one binary</span></div><div><b>200+</b><span>server types fingerprinted</span></div><div><b>35,000</b><span>MAC vendor entries, offline</span></div></div>
+          <p class="proof-note">From the psnet README. GeoIP data is embedded, so no lookups leave your machine.</p>
+          <ul class="ticks"><li>Dashboard with a traffic graph, a world map of connections and top apps by bandwidth</li><li>Connections with DNS resolved hostnames and the real service behind svchost</li><li>Servers tab matches 6,500+ Wappalyzer signatures</li><li>Packet inspector with protocol dissection and hex view (raw sockets, needs Administrator)</li><li>Per app firewall block and allow from the TUI</li><li>LAN device scan and a network adapters tab</li></ul>
+          <div class="links"><a href="https://github.com/psmux/psnet">GitHub</a><a href="https://crates.io/crates/psnet">crates.io</a><a href="https://github.com/microsoft/winget-pkgs/tree/master/manifests/m/marlocarlo/psnet">WinGet manifest</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-grid">
+    <div>
+      <div class="brand"><img src="/assets/favicon.svg" alt="" width="28" height="28">psmux</div>
+      <p>Open source tools by Godwin Sam Josh, published under github.com/psmux.</p>
+      <p class="fine">Star counts refresh from the GitHub API. Other numbers were collected in October 2026.</p>
+    </div>
+    <div>
+      <h2>Projects</h2>
+      <ul>
+        <li><a href="/">All projects</a></li>
+        <li><a href="https://psmux.pages.dev/">psmux, tmux for Windows</a></li>
+        <li><a href="/deskvnc/">DeskVNC</a></li>
+        <li><a href="/godwinmix/">GodwinMix</a></li>
+        <li><a href="/pstop/">pstop, htop for Windows</a></li>
+        <li><a href="/psnet/">psnet</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Elsewhere</h2>
+      <ul>
+        <li><a href="https://github.com/psmux">github.com/psmux</a></li>
+        <li><a href="https://github.com/sponsors/psmux">GitHub Sponsors</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

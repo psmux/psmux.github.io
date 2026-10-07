@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GodwinMix: open source live video mixer and RTMP switcher in Rust</title>
+<meta name="description" content="GodwinMix is a headless live video mixer on GStreamer. Switch RTMP, SRT, HLS and web page sources and restream to several RTMP destinations without the output stopping. HTTP API and MCP server.">
+<link rel="canonical" href="https://psmux.github.io/godwinmix/">
+<meta name="theme-color" content="#0a0c0b" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f5f4ef" media="(prefers-color-scheme: light)">
+<meta name="author" content="Godwin Sam Josh">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="psmux">
+<meta property="og:url" content="https://psmux.github.io/godwinmix/">
+<meta property="og:title" content="GodwinMix: open source live video mixer and RTMP switcher in Rust">
+<meta property="og:description" content="GodwinMix is a headless live video mixer on GStreamer. Switch RTMP, SRT, HLS and web page sources and restream to several RTMP destinations without the output stopping. HTTP API and MCP server.">
+<meta property="og:image" content="https://psmux.github.io/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="GodwinMix: open source live video mixer and RTMP switcher in Rust">
+<meta name="twitter:description" content="GodwinMix is a headless live video mixer on GStreamer. Switch RTMP, SRT, HLS and web page sources and restream to several RTMP destinations without the output stopping. HTTP API and MCP server.">
+<meta name="twitter:image" content="https://psmux.github.io/assets/og.png">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="/assets/site.css">
+<script src="/assets/site.js" defer></script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "SoftwareApplication",
+   "name": "GodwinMix",
+   "description": "Live video mixer in Rust on GStreamer that switches RTMP, SRT, HLS and web sources and keeps the RTMP output running, with an HTTP API and MCP server.",
+   "applicationCategory": "MultimediaApplication",
+   "operatingSystem": "Linux, macOS, Windows",
+   "url": "https://psmux.github.io/godwinmix/",
+   "softwareVersion": "0.2.1",
+   "license": "https://www.apache.org/licenses/LICENSE-2.0",
+   "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+   },
+   "author": {
+    "@type": "Person",
+    "name": "Godwin Sam Josh",
+    "url": "https://psmux.github.io/"
+   },
+   "sameAs": [
+    "https://github.com/psmux/GodwinMix"
+   ]
+  },
+  {
+   "@type": "SoftwareSourceCode",
+   "name": "GodwinMix",
+   "codeRepository": "https://github.com/psmux/GodwinMix",
+   "programmingLanguage": "Rust",
+   "license": "https://www.apache.org/licenses/LICENSE-2.0"
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "psmux",
+     "item": "https://psmux.github.io/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "GodwinMix",
+     "item": "https://psmux.github.io/godwinmix/"
+    }
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Is GodwinMix a headless OBS alternative?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "It covers the switching and restreaming part: inputs by URL, one programme output to several RTMP destinations, all controlled over HTTP. It runs headless in Docker or as a desktop app."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Can an AI agent control it?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes. godwinmix mcp is an MCP server, and godwinmix skill install adds a skill for Claude, opencode, pi, Codex or Gemini."
+     }
+    }
+   ]
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-star" viewBox="0 0 16 16"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"/></symbol>
+  <symbol id="i-gh" viewBox="0 0 16 16"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8.5" y="8.5" width="12" height="12" rx="2"/><path d="M15.5 5.5v-1a1 1 0 0 0-1-1h-10a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h1"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M4.5 12.5l5 5 10-11"/></symbol>
+</svg>
+<a class="skip" href="#main">Skip to content</a>
+<header class="statusline">
+  <nav class="wrap" aria-label="Main">
+    <a class="session" href="/" aria-label="psmux home"><img src="/assets/favicon.svg" alt="" width="22" height="22"><span class="tag">[psmux]</span></a>
+    <ul class="windows">
+      <li><a href="/"><span class="n">0:</span>home</a></li>
+      <li><a href="/#psmux"><span class="n">1:</span>psmux</a></li>
+      <li><a href="/deskvnc/"><span class="n">2:</span>deskvnc</a></li>
+      <li><a href="/godwinmix/" aria-current="true"><span class="n">3:</span>godwinmix</a></li>
+      <li><a href="/#tools"><span class="n">4:</span>tools</a></li>
+    </ul>
+    <div class="status-right">
+      <a class="star-btn" href="https://github.com/psmux" aria-label="psmux on GitHub, total stars">
+        <svg aria-hidden="true"><use href="#i-gh"/></svg>github.com/psmux
+        <span class="count"><span data-total-stars>4,335</span></span>
+      </a>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="page-hero">
+    <div class="wrap">
+      <p class="crumbs"><a href="/">psmux</a> / GodwinMix</p>
+      <h1>GodwinMix</h1>
+      <p class="sub">A live video mixer in Rust that switches sources and keeps the RTMP output running. Headless, with an HTTP API, a command line client and an MCP server.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="https://github.com/psmux/GodwinMix"><svg aria-hidden="true"><use href="#i-star"/></svg>Star GodwinMix on GitHub</a>
+        <a class="btn btn-ghost" href="https://github.com/psmux/GodwinMix/releases/latest">Download</a>
+      </div>
+      <ul class="meta-row" aria-label="Platforms and license"><li class="chip os lin">Linux</li><li class="chip os mac">macOS</li><li class="chip os win">Windows</li><li class="chip os dock">Docker</li><li class="chip">Apache 2.0</li><li class="chip">v0.2.1</li></ul>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:24px">
+    <div class="wrap cols">
+      <div class="stack">
+        <div class="media-slot" data-media="GodwinMix" data-variant="feature" data-eager>
+          <div class="frame">
+            <div class="ph">
+              <div class="ph-bar"><b>GodwinMix</b><span>capture pending</span></div>
+<pre><span class="pr">$ </span>git clone https://github.com/psmux/GodwinMix &amp;&amp; cd GodwinMix
+<span class="pr">$ </span>docker compose -f deploy/docker/docker-compose.yml up -d --build
+
+<span class="cm"># let an agent run the show</span>
+<span class="pr">$ </span>claude mcp add godwinmix -- godwinmix mcp</pre>
+              <dl class="spec"><dt>release</dt><dd>v0.2.1, October 2026</dd><dt>runs on</dt><dd>Linux, macOS, Windows, Docker</dd><dt>inputs</dt><dd>RTMP, HLS, DASH, RTSP, SRT, UDP, RTP, files, web pages</dd><dt>output</dt><dd>one or more RTMP destinations</dd><dt>encoders</dt><dd>NVIDIA, VA, Media Foundation, VideoToolbox, x264</dd></dl>
+            </div>
+          </div>
+        </div>
+        <div class="prose">
+        <h2>Switching without dropping the stream</h2>
+        <p>GodwinMix takes several sources, puts one on programme at a time, and sends programme to one or more RTMP destinations. Switching happens upstream on raw video and audio, so the encoder that feeds your destinations never restarts. Sources can be added, removed or fail while the output keeps going.</p>
+        <h2>One binary, one port</h2>
+        <p>It is a single Rust binary on GStreamer with one HTTP port. The web UI, the desktop app, the <code>gmx</code> command line client and the MCP server all use the same public API, and <code>api_level 1</code> is frozen for breaking changes. That makes it scriptable from a shell and drivable by an AI agent with the same calls.</p><p>The project was called LiveboxMix until version 0.2.</p>
+        <h2>Questions</h2>
+        <h3>Is GodwinMix a headless OBS alternative?</h3>
+        <p>It covers the switching and restreaming part: inputs by URL, one programme output to several RTMP destinations, all controlled over HTTP. It runs headless in Docker or as a desktop app.</p>
+        <h3>Can an AI agent control it?</h3>
+        <p>Yes. godwinmix mcp is an MCP server, and godwinmix skill install adds a skill for Claude, opencode, pi, Codex or Gemini.</p>
+        </div>
+      </div>
+      <div>
+        <div class="feature-copy">
+          <span class="kicker">install</span>
+          <div class="install" data-tabs>
+        <div class="install-tabs" role="tablist" aria-label="Install GodwinMix"><button role="tab" aria-selected="true">Docker</button><button role="tab" aria-selected="false">Image</button><button role="tab" aria-selected="false">Desktop app</button><button role="tab" aria-selected="false">From source</button><button role="tab" aria-selected="false">AI agent</button></div>
+        <div class="cmd" role="tabpanel"><pre><code><span class="pr">$ </span>git clone https://github.com/psmux/GodwinMix &amp;&amp; cd GodwinMix
+<span class="pr">$ </span>docker compose -f deploy/docker/docker-compose.yml up -d --build</code></pre>
+          <p class="install-foot">The quickstart is timed in CI on every push and the job fails if it takes five minutes or more.</p></div>
+<div class="cmd" role="tabpanel" hidden><pre><code><span class="pr">$ </span>docker run -d --name godwinmix --shm-size 1g \
+<span class="pr">$ </span>  -p 127.0.0.1:8080:8080 -e GODWINMIX_TOKEN=&quot;$TOKEN&quot; \
+<span class="pr">$ </span>  ghcr.io/psmux/godwinmix:latest</code></pre></div>
+<div class="cmd" role="tabpanel" hidden><pre><code>https://github.com/psmux/GodwinMix/releases/latest</code></pre>
+          <p class="install-foot">.exe or .msi on Windows, .dmg on Apple Silicon, .deb and .AppImage on Linux.</p></div>
+<div class="cmd" role="tabpanel" hidden><pre><code><span class="pr">$ </span>brew install gstreamer
+<span class="pr">$ </span>cargo install --git https://github.com/psmux/GodwinMix godwinmix
+<span class="pr">$ </span>godwinmix --probe
+<span class="pr">$ </span>godwinmix</code></pre></div>
+<div class="cmd" role="tabpanel" hidden><pre><code><span class="pr">$ </span>claude mcp add godwinmix -- godwinmix mcp
+<span class="pr">$ </span>godwinmix skill install --for claude</code></pre></div>
+      </div>
+          <div class="proof" style="margin-top:22px"><div><b>30 fps</b><span>programme held across takes, 0 disconnects</span></div><div><b>+4 ms</b><span>scheduled cue against the requested time</span></div><div><b>123</b><span>unit tests that build real GStreamer pipelines</span></div></div>
+          <p class="proof-note">From the GodwinMix README. Tested against mediamtx and node-media-server v4. One frame at 30 fps is 33 ms.</p>
+          <ul class="ticks"><li>Sources chosen by URL, including <code>exec:</code> commands and web pages rendered by a real browser</li><li>The output encoder starts once and never restarts</li><li>Hardware codecs picked at startup, software x264 as the fallback</li><li>Everything is one HTTP call. <code>gmx ctl</code> scripts it</li><li>Plugins run beside the core through a public plugin protocol, with an optional WebAssembly host</li><li>Ad breaks played now or on a given frame, with automatic return to the camera</li></ul>
+          <div class="links"><a href="https://github.com/psmux/GodwinMix">GitHub</a><a href="https://github.com/psmux/GodwinMix/tree/main/docs">Docs</a><a href="https://github.com/psmux/GodwinMix/blob/main/docs/agents.md">Agent playbook</a><a href="https://github.com/psmux/GodwinMix/blob/main/docs/reference/http-api.md">HTTP API</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-grid">
+    <div>
+      <div class="brand"><img src="/assets/favicon.svg" alt="" width="28" height="28">psmux</div>
+      <p>Open source tools by Godwin Sam Josh, published under github.com/psmux.</p>
+      <p class="fine">Star counts refresh from the GitHub API. Other numbers were collected in October 2026.</p>
+    </div>
+    <div>
+      <h2>Projects</h2>
+      <ul>
+        <li><a href="/">All projects</a></li>
+        <li><a href="https://psmux.pages.dev/">psmux, tmux for Windows</a></li>
+        <li><a href="/deskvnc/">DeskVNC</a></li>
+        <li><a href="/godwinmix/">GodwinMix</a></li>
+        <li><a href="/pstop/">pstop, htop for Windows</a></li>
+        <li><a href="/psnet/">psnet</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Elsewhere</h2>
+      <ul>
+        <li><a href="https://github.com/psmux">github.com/psmux</a></li>
+        <li><a href="https://github.com/sponsors/psmux">GitHub Sponsors</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

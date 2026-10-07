@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>pstop: htop for Windows, a terminal system monitor in Rust</title>
+<meta name="description" content="pstop is htop for Windows 10 and 11: per core CPU bars, memory, GPU, disk I/O and per process network in your terminal. Install with winget install marlocarlo.pstop.">
+<link rel="canonical" href="https://psmux.github.io/pstop/">
+<meta name="theme-color" content="#0a0c0b" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f5f4ef" media="(prefers-color-scheme: light)">
+<meta name="author" content="Godwin Sam Josh">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="psmux">
+<meta property="og:url" content="https://psmux.github.io/pstop/">
+<meta property="og:title" content="pstop: htop for Windows, a terminal system monitor in Rust">
+<meta property="og:description" content="pstop is htop for Windows 10 and 11: per core CPU bars, memory, GPU, disk I/O and per process network in your terminal. Install with winget install marlocarlo.pstop.">
+<meta property="og:image" content="https://psmux.github.io/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="pstop: htop for Windows, a terminal system monitor in Rust">
+<meta name="twitter:description" content="pstop is htop for Windows 10 and 11: per core CPU bars, memory, GPU, disk I/O and per process network in your terminal. Install with winget install marlocarlo.pstop.">
+<meta name="twitter:image" content="https://psmux.github.io/assets/og.png">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="/assets/site.css">
+<script src="/assets/site.js" defer></script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "SoftwareApplication",
+   "name": "pstop",
+   "description": "htop style process viewer and system monitor for the Windows terminal, written in Rust.",
+   "applicationCategory": "UtilitiesApplication",
+   "operatingSystem": "Windows 10, Windows 11",
+   "url": "https://psmux.github.io/pstop/",
+   "softwareVersion": "0.5.4",
+   "license": "https://opensource.org/licenses/MIT",
+   "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+   },
+   "author": {
+    "@type": "Person",
+    "name": "Godwin Sam Josh",
+    "url": "https://psmux.github.io/"
+   },
+   "sameAs": [
+    "https://github.com/psmux/pstop"
+   ]
+  },
+  {
+   "@type": "SoftwareSourceCode",
+   "name": "pstop",
+   "codeRepository": "https://github.com/psmux/pstop",
+   "programmingLanguage": "Rust",
+   "license": "https://opensource.org/licenses/MIT"
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "psmux",
+     "item": "https://psmux.github.io/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "pstop",
+     "item": "https://psmux.github.io/pstop/"
+    }
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Is there an htop for Windows?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "pstop is one. It runs in PowerShell or Windows Terminal on Windows 10 and 11, and pstop --install-alias adds an htop command."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Does the per process network tab need admin rights?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "No. The README says per process bandwidth works without admin."
+     }
+    }
+   ]
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-star" viewBox="0 0 16 16"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"/></symbol>
+  <symbol id="i-gh" viewBox="0 0 16 16"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8.5" y="8.5" width="12" height="12" rx="2"/><path d="M15.5 5.5v-1a1 1 0 0 0-1-1h-10a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h1"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M4.5 12.5l5 5 10-11"/></symbol>
+</svg>
+<a class="skip" href="#main">Skip to content</a>
+<header class="statusline">
+  <nav class="wrap" aria-label="Main">
+    <a class="session" href="/" aria-label="psmux home"><img src="/assets/favicon.svg" alt="" width="22" height="22"><span class="tag">[psmux]</span></a>
+    <ul class="windows">
+      <li><a href="/"><span class="n">0:</span>home</a></li>
+      <li><a href="/#psmux"><span class="n">1:</span>psmux</a></li>
+      <li><a href="/deskvnc/"><span class="n">2:</span>deskvnc</a></li>
+      <li><a href="/godwinmix/"><span class="n">3:</span>godwinmix</a></li>
+      <li><a href="/#tools" aria-current="true"><span class="n">4:</span>tools</a></li>
+    </ul>
+    <div class="status-right">
+      <a class="star-btn" href="https://github.com/psmux" aria-label="psmux on GitHub, total stars">
+        <svg aria-hidden="true"><use href="#i-gh"/></svg>github.com/psmux
+        <span class="count"><span data-total-stars>4,335</span></span>
+      </a>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="page-hero">
+    <div class="wrap">
+      <p class="crumbs"><a href="/">psmux</a> / pstop</p>
+      <h1>pstop</h1>
+      <p class="sub">htop for Windows. A terminal system monitor for Windows 10 and 11, written in Rust, that also answers to <code>htop</code>.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="https://github.com/psmux/pstop"><svg aria-hidden="true"><use href="#i-star"/></svg>Star pstop on GitHub <span class="count" data-stars="pstop">255</span></a>
+        <a class="btn btn-ghost" href="https://github.com/psmux/pstop/releases">Releases</a>
+      </div>
+      <ul class="meta-row" aria-label="Platforms and license"><li class="chip os win">Windows 10</li><li class="chip os win">Windows 11</li><li class="chip">MIT</li><li class="chip">v0.5.4</li></ul>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:24px">
+    <div class="wrap cols">
+      <div class="stack">
+        <div class="media-slot" data-media="pstop" data-variant="feature" data-eager>
+          <div class="frame">
+            <div class="ph">
+              <div class="ph-bar"><b>pstop</b><span>capture pending</span></div>
+<pre><span class="pr">PS&gt; </span>winget install marlocarlo.pstop
+<span class="pr">PS&gt; </span>pstop --install-alias
+<span class="pr">PS&gt; </span>htop</pre>
+              <dl class="spec"><dt>release</dt><dd>v0.5.4, April 2026</dd><dt>runs on</dt><dd>Windows 10, Windows 11</dd><dt>size</dt><dd>about 1 MB, one binary</dd><dt>downloads</dt><dd><b>10,056</b> from GitHub releases</dd><dt>license</dt><dd>MIT</dd></dl>
+            </div>
+          </div>
+        </div>
+        <div class="prose">
+        <h2>htop, on Windows, in your terminal</h2>
+        <p>pstop is an htop style process viewer for Windows. It shows per core CPU bars, memory, swap, network and GPU meters above a process list you can sort, search, filter and turn into a tree. You can kill a process, change its priority or set its CPU affinity from the keyboard.</p>
+        <h2>More than htop shows</h2>
+        <p>Extra tabs cover disk I/O per process, network bandwidth per process without admin rights, GPU use per process, and the processes running inside WSL.</p>
+        <h2>Questions</h2>
+        <h3>Is there an htop for Windows?</h3>
+        <p>pstop is one. It runs in PowerShell or Windows Terminal on Windows 10 and 11, and pstop --install-alias adds an htop command.</p>
+        <h3>Does the per process network tab need admin rights?</h3>
+        <p>No. The README says per process bandwidth works without admin.</p>
+        </div>
+      </div>
+      <div>
+        <div class="feature-copy">
+          <span class="kicker">install</span>
+          <div class="install" data-tabs>
+        <div class="install-tabs" role="tablist" aria-label="Install pstop"><button role="tab" aria-selected="true">WinGet</button><button role="tab" aria-selected="false">Chocolatey</button><button role="tab" aria-selected="false">Cargo</button><button role="tab" aria-selected="false">htop alias</button></div>
+        <div class="cmd" role="tabpanel"><pre><code><span class="pr">PS&gt; </span>winget install marlocarlo.pstop</code></pre></div>
+<div class="cmd" role="tabpanel" hidden><pre><code><span class="pr">PS&gt; </span>choco install pstop</code></pre></div>
+<div class="cmd" role="tabpanel" hidden><pre><code><span class="pr">PS&gt; </span>cargo install pstop</code></pre></div>
+<div class="cmd" role="tabpanel" hidden><pre><code><span class="pr">PS&gt; </span>pstop --install-alias</code></pre>
+          <p class="install-foot">Adds an <code>htop</code> command that runs pstop.</p></div>
+      </div>
+          <div class="proof" style="margin-top:22px"><div><b>255</b><span>GitHub stars</span></div><div><b>10,056</b><span>release downloads</span></div><div><b>23</b><span>color schemes</span></div></div>
+          <p class="proof-note">Stars and downloads from the GitHub API, October 2026. Also on crates.io with 951 downloads.</p>
+          <ul class="ticks"><li>Per core CPU bars, plus memory, swap, network, GPU and VRAM meters</li><li>Five tabs: Main, I/O, Net (per process bandwidth, no admin), GPU and WSL</li><li>Tree view, search, filter, kill, priority and CPU affinity</li><li>F2 setup menu for meters, columns and 15 display options</li><li>23 color schemes, including the 16 Windows Terminal schemes</li><li>Mouse support and opt in vim keys</li></ul>
+          <div class="links"><a href="https://github.com/psmux/pstop">GitHub</a><a href="https://crates.io/crates/pstop">crates.io</a><a href="https://community.chocolatey.org/packages/pstop">Chocolatey</a><a href="https://github.com/microsoft/winget-pkgs/tree/master/manifests/m/marlocarlo/pstop">WinGet manifest</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-grid">
+    <div>
+      <div class="brand"><img src="/assets/favicon.svg" alt="" width="28" height="28">psmux</div>
+      <p>Open source tools by Godwin Sam Josh, published under github.com/psmux.</p>
+      <p class="fine">Star counts refresh from the GitHub API. Other numbers were collected in October 2026.</p>
+    </div>
+    <div>
+      <h2>Projects</h2>
+      <ul>
+        <li><a href="/">All projects</a></li>
+        <li><a href="https://psmux.pages.dev/">psmux, tmux for Windows</a></li>
+        <li><a href="/deskvnc/">DeskVNC</a></li>
+        <li><a href="/godwinmix/">GodwinMix</a></li>
+        <li><a href="/pstop/">pstop, htop for Windows</a></li>
+        <li><a href="/psnet/">psnet</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Elsewhere</h2>
+      <ul>
+        <li><a href="https://github.com/psmux">github.com/psmux</a></li>
+        <li><a href="https://github.com/sponsors/psmux">GitHub Sponsors</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

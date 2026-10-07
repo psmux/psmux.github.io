@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>psmux: tmux for Windows, htop for Windows and more open source Rust tools</title>
+<meta name="description" content="Open source Rust tools by Godwin Sam Josh. psmux is native tmux for Windows with no WSL. Also pstop (htop for Windows), psnet, DeskVNC (VNC, RDP and SSH client with MCP) and GodwinMix.">
+<link rel="canonical" href="https://psmux.github.io/">
+<meta name="theme-color" content="#0a0c0b" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f5f4ef" media="(prefers-color-scheme: light)">
+<meta name="author" content="Godwin Sam Josh">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="psmux">
+<meta property="og:url" content="https://psmux.github.io/">
+<meta property="og:title" content="psmux: native tmux for Windows, and the Rust tools around it">
+<meta property="og:description" content="psmux (3.6k stars) runs tmux natively on Windows. Plus pstop, psnet, DeskVNC, GodwinMix and more open source Rust tools by Godwin Sam Josh.">
+<meta property="og:image" content="https://psmux.github.io/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="psmux: native tmux for Windows, and a family of open source Rust tools">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="psmux: native tmux for Windows, and the Rust tools around it">
+<meta name="twitter:description" content="tmux on Windows with no WSL, htop for Windows, a VNC, RDP and SSH client AI agents can drive, and a live video mixer. Open source, mostly Rust.">
+<meta name="twitter:image" content="https://psmux.github.io/assets/og.png">
+
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<link rel="preconnect" href="https://api.github.com" crossorigin>
+<link rel="stylesheet" href="/assets/site.css">
+<script src="/assets/site.js" defer></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://psmux.github.io/#author",
+      "name": "Godwin Sam Josh",
+      "url": "https://psmux.github.io/",
+      "sameAs": ["https://github.com/psmux"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://psmux.github.io/#site",
+      "url": "https://psmux.github.io/",
+      "name": "psmux",
+      "description": "Open source Rust tools published under github.com/psmux by Godwin Sam Josh.",
+      "author": {"@id": "https://psmux.github.io/#author"}
+    },
+    {
+      "@type": "ItemList",
+      "name": "Projects under github.com/psmux",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "item": {"@type": "SoftwareSourceCode", "name": "psmux", "description": "Native tmux for Windows, written in Rust on ConPTY. Reads .tmux.conf and needs no WSL.", "codeRepository": "https://github.com/psmux/psmux", "url": "https://psmux.pages.dev/", "programmingLanguage": "Rust", "license": "https://opensource.org/licenses/MIT", "runtimePlatform": "Windows 10, Windows 11", "author": {"@id": "https://psmux.github.io/#author"}}},
+        {"@type": "ListItem", "position": 2, "item": {"@type": "SoftwareSourceCode", "name": "DeskVNC", "description": "VNC, RDP and SSH client for Windows, macOS and Linux with an MCP server for AI agents.", "codeRepository": "https://github.com/psmux/DeskVNC", "url": "https://psmux.github.io/deskvnc/", "programmingLanguage": "Rust", "license": "https://opensource.org/licenses/MIT", "runtimePlatform": "Windows, macOS, Linux", "author": {"@id": "https://psmux.github.io/#author"}}},
+        {"@type": "ListItem", "position": 3, "item": {"@type": "SoftwareSourceCode", "name": "GodwinMix", "description": "Live video mixer in Rust that keeps the RTMP output running, with an HTTP API and an MCP server.", "codeRepository": "https://github.com/psmux/GodwinMix", "url": "https://psmux.github.io/godwinmix/", "programmingLanguage": "Rust", "license": "https://www.apache.org/licenses/LICENSE-2.0", "runtimePlatform": "Linux, macOS, Windows, Docker", "author": {"@id": "https://psmux.github.io/#author"}}},
+        {"@type": "ListItem", "position": 4, "item": {"@type": "SoftwareSourceCode", "name": "pstop", "description": "htop for Windows: a terminal system monitor written in Rust.", "codeRepository": "https://github.com/psmux/pstop", "url": "https://psmux.github.io/pstop/", "programmingLanguage": "Rust", "license": "https://opensource.org/licenses/MIT", "runtimePlatform": "Windows 10, Windows 11", "author": {"@id": "https://psmux.github.io/#author"}}},
+        {"@type": "ListItem", "position": 5, "item": {"@type": "SoftwareSourceCode", "name": "psnet", "description": "Terminal network monitor for Windows with nine tabs and no Npcap.", "codeRepository": "https://github.com/psmux/psnet", "url": "https://psmux.github.io/psnet/", "programmingLanguage": "Rust", "license": "https://opensource.org/licenses/MIT", "runtimePlatform": "Windows 10, Windows 11", "author": {"@id": "https://psmux.github.io/#author"}}},
+        {"@type": "ListItem", "position": 6, "item": {"@type": "SoftwareSourceCode", "name": "Tmux Plugin Panel", "description": "TUI plugin and theme manager for tmux and psmux.", "codeRepository": "https://github.com/psmux/Tmux-Plugin-Panel", "programmingLanguage": "Rust", "license": "https://opensource.org/licenses/MIT", "author": {"@id": "https://psmux.github.io/#author"}}},
+        {"@type": "ListItem", "position": 7, "item": {"@type": "SoftwareSourceCode", "name": "OMP Manager", "description": "Setup wizard TUI for Oh My Posh themes, fonts and shells.", "codeRepository": "https://github.com/psmux/omp-manager", "programmingLanguage": "Rust", "license": "https://opensource.org/licenses/MIT", "author": {"@id": "https://psmux.github.io/#author"}}},
+        {"@type": "ListItem", "position": 8, "item": {"@type": "SoftwareSourceCode", "name": "psmux plugins", "description": "Plugin manager and tmux plugin ports for psmux, in PowerShell.", "codeRepository": "https://github.com/psmux/psmux-plugins", "programmingLanguage": "PowerShell", "author": {"@id": "https://psmux.github.io/#author"}}},
+        {"@type": "ListItem", "position": 9, "item": {"@type": "SoftwareSourceCode", "name": "TerminalMap", "description": "OpenStreetMap in the terminal, as an app and a Rust library.", "codeRepository": "https://github.com/psmux/TerminalMap", "programmingLanguage": "Rust", "license": "https://opensource.org/licenses/MIT", "author": {"@id": "https://psmux.github.io/#author"}}},
+        {"@type": "ListItem", "position": 10, "item": {"@type": "SoftwareSourceCode", "name": "Psroot", "description": "Containers on Windows without Hyper-V, WSL or Docker, using AppContainer.", "codeRepository": "https://github.com/psmux/Psroot", "programmingLanguage": "Rust", "author": {"@id": "https://psmux.github.io/#author"}}},
+        {"@type": "ListItem", "position": 11, "item": {"@type": "SoftwareSourceCode", "name": "Vigil", "description": "Terminal security dashboard for Linux servers, written in Rust.", "codeRepository": "https://github.com/psmux/vigil", "programmingLanguage": "Rust", "license": "https://opensource.org/licenses/MIT", "author": {"@id": "https://psmux.github.io/#author"}}},
+        {"@type": "ListItem", "position": 12, "item": {"@type": "SoftwareSourceCode", "name": "TmuxTop", "description": "Top style monitor for tmux sessions, with backup and restore.", "codeRepository": "https://github.com/psmux/tmuxtop", "url": "https://psmux.github.io/tmuxtop/", "programmingLanguage": "Python", "license": "https://opensource.org/licenses/MIT", "author": {"@id": "https://psmux.github.io/#author"}}}
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-star" viewBox="0 0 16 16"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"/></symbol>
+  <symbol id="i-gh" viewBox="0 0 16 16"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8.5" y="8.5" width="12" height="12" rx="2"/><path d="M15.5 5.5v-1a1 1 0 0 0-1-1h-10a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h1"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M4.5 12.5l5 5 10-11"/></symbol>
+</svg>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="statusline">
+  <nav class="wrap" aria-label="Main">
+    <a class="session" href="/" aria-label="psmux home"><img src="/assets/favicon.svg" alt="" width="22" height="22"><span class="tag">[psmux]</span></a>
+    <ul class="windows">
+      <li><a href="#top" data-win="top"><span class="n">0:</span>home</a></li>
+      <li><a href="#psmux" data-win="psmux"><span class="n">1:</span>psmux</a></li>
+      <li><a href="#deskvnc" data-win="deskvnc"><span class="n">2:</span>deskvnc</a></li>
+      <li><a href="#godwinmix" data-win="godwinmix"><span class="n">3:</span>godwinmix</a></li>
+      <li><a href="#tools" data-win="tools"><span class="n">4:</span>tools</a></li>
+    </ul>
+    <div class="status-right">
+      <a class="star-btn" href="https://github.com/psmux" aria-label="psmux on GitHub, total stars">
+        <svg aria-hidden="true"><use href="#i-gh"/></svg>github.com/psmux
+        <span class="count"><span data-total-stars>4,335</span></span>
+      </a>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow"><span>psmux <span data-release="psmux">v3.3.8</span></span><span class="dot">/</span><span>MIT</span><span class="dot">/</span><span>Rust on ConPTY</span></p>
+      <!-- GODWIN: rewrite in your voice (headline) -->
+      <h1 id="hero-title">tmux, native on Windows. <em>No WSL.</em></h1>
+      <!-- GODWIN: rewrite in your voice (the "fingers and scripts" clause) -->
+      <p class="lede"><strong>psmux</strong> is a terminal multiplexer for Windows 10 and 11 that runs directly on ConPTY. It reads your existing .tmux.conf, and it installs a <code>tmux</code> command so your fingers and scripts do not have to change.</p>
+      <!-- GODWIN: rewrite in your voice (account statement) -->
+      <p class="lede-2">This account is where I publish it, next to the other Rust tools I build: an htop for Windows, a network monitor, a VNC, RDP and SSH client that AI agents can drive, and a live video mixer.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="https://github.com/psmux/psmux" data-star-link="psmux">
+          <svg aria-hidden="true"><use href="#i-star"/></svg>Star psmux on GitHub <span class="count" data-stars="psmux">3,626</span>
+        </a>
+        <a class="btn btn-ghost" href="#tools">Browse projects</a>
+      </div>
+      <p class="hero-proof">
+        <span><span class="live-dot" aria-hidden="true"></span><b data-total-stars>4,335</b> stars across 12 projects</span>
+        <span><b>133,111</b> psmux release downloads</span>
+      </p>
+    </div>
+
+    <figure class="term-figure">
+      <div class="term" id="hero-term" aria-hidden="true">
+        <div class="term-chrome">
+          <span class="term-tab"><i></i>PowerShell</span><span>+</span>
+          <span class="spacer"></span>
+          <span class="ctl"><span></span><span></span><span></span></span>
+        </div>
+        <div class="term-screen">
+          <div class="panes" data-layout="1">
+            <div class="pane p0 active"><pre></pre></div>
+            <div class="pane p1"><pre></pre></div>
+            <div class="pane p2"><pre></pre></div>
+          </div>
+          <div class="tstatus"><span class="st-left">[work] <span class="w-active">0:pwsh*</span></span><span class="st-right">"DESKTOP" 14:02 08 Oct 26</span></div>
+          <div class="keys"><kbd>Ctrl</kbd>+<kbd>b</kbd> <kbd>%</kbd><span class="what">split-window -h</span></div>
+        </div>
+      </div>
+      <figcaption class="term-caption">Illustration of a psmux session, drawn in HTML. Real captures are further down.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="numbers" aria-label="Project numbers">
+  <div class="wrap">
+    <ul>
+      <li><span class="big" data-total-stars>4,335</span><span class="lbl">GitHub stars across the 12 projects below</span><span class="src">live from the GitHub API</span></li>
+      <li><span class="big">151,000+</span><span class="lbl">release downloads on GitHub, all projects</span><span class="src">sum of release assets, Oct 2026</span></li>
+      <li><span class="big">48</span><span class="lbl">people have contributed to psmux</span><span class="src">GitHub contributors API</span></li>
+      <li><span class="big">10 of 12</span><span class="lbl">projects written in Rust</span><span class="src">the others: PowerShell, Python</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= psmux ================= -->
+<section class="section" id="psmux" aria-labelledby="psmux-title">
+  <div class="wrap feature">
+    <div class="feature-media">
+      <div class="media-slot" data-media="psmux" data-variant="feature">
+        <div class="frame">
+          <div class="ph">
+            <div class="ph-bar"><b>psmux</b><span>capture pending</span></div>
+<pre><span class="pr">PS&gt;</span> winget install psmux
+<span class="pr">PS&gt;</span> psmux new-session -s work
+<span class="cm"># or type tmux. psmux, pmux and tmux are the same binary.</span></pre>
+            <dl class="spec"><dt>release</dt><dd>v3.3.8, August 2026</dd><dt>runs on</dt><dd>Windows 10, Windows 11</dd><dt>binaries</dt><dd>psmux, pmux, tmux</dd><dt>downloads</dt><dd><b>133,111</b> from GitHub releases</dd><dt>license</dt><dd>MIT</dd></dl>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="feature-copy">
+      <span class="kicker">01 / flagship</span>
+      <h2 id="psmux-title">psmux</h2>
+      <p class="sub">Native tmux for Windows, written in Rust on ConPTY.</p>
+      <p>psmux drives Windows ConPTY directly and speaks the tmux command language. It reads your existing .tmux.conf and tmux themes. Install it and you get three identical binaries, <code>psmux</code>, <code>pmux</code> and <code>tmux</code>, so old scripts keep working. It needs no WSL, Cygwin or MSYS2.</p>
+      <ul class="meta-row" aria-label="Platforms and license">
+        <li class="chip os win">Windows 10</li><li class="chip os win">Windows 11</li><li class="chip">MIT</li><li class="chip"><span data-release="psmux">v3.3.8</span></li>
+      </ul>
+      <ul class="ticks">
+        <li>90+ tmux compatible commands and 140+ format variables</li>
+        <li>Mouse support, including over SSH on supported Windows builds</li>
+        <li>Copy mode with 53 vim keys</li>
+        <li>Claude Code agent teams open each teammate in its own psmux pane, with no extra config</li>
+        <li>Control mode (<code>-C</code> and <code>-CC</code>) for IDE and plugin authors, iTerm2 tmux gateway included</li>
+      </ul>
+
+      <div class="install" data-tabs>
+        <div class="install-tabs" role="tablist" aria-label="Install psmux">
+          <button role="tab" aria-selected="true">WinGet</button>
+          <button role="tab" aria-selected="false">Cargo</button>
+          <button role="tab" aria-selected="false">Scoop</button>
+          <button role="tab" aria-selected="false">Chocolatey</button>
+        </div>
+        <div class="cmd" role="tabpanel"><pre><code><span class="pr">PS&gt; </span>winget install psmux</code></pre></div>
+        <div class="cmd" role="tabpanel" hidden><pre><code><span class="pr">PS&gt; </span>cargo install psmux</code></pre></div>
+        <div class="cmd" role="tabpanel" hidden><pre><code><span class="pr">PS&gt; </span>scoop bucket add psmux https://github.com/psmux/scoop-psmux
+<span class="pr">PS&gt; </span>scoop install psmux</code></pre></div>
+        <div class="cmd" role="tabpanel" hidden><pre><code><span class="pr">PS&gt; </span>choco install psmux</code></pre></div>
+      </div>
+
+      <div class="links">
+        <a class="btn btn-primary" href="https://github.com/psmux/psmux"><svg aria-hidden="true"><use href="#i-star"/></svg>Star <span class="count" data-stars="psmux">3,626</span></a>
+        <a href="https://psmux.pages.dev/">psmux.pages.dev</a>
+        <a href="https://github.com/psmux/psmux/blob/master/docs/README.md">Docs</a>
+        <a href="https://github.com/psmux/psmux/blob/master/docs/claude-code.md">Claude Code guide</a>
+        <a href="https://github.com/psmux/psmux-plugins">Plugins</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DeskVNC ================= -->
+<section class="section" id="deskvnc" aria-labelledby="deskvnc-title">
+  <div class="wrap feature flip">
+    <div class="feature-media">
+      <div class="media-slot" data-media="DeskVNC" data-variant="feature">
+        <div class="frame">
+          <div class="ph">
+            <div class="ph-bar"><b>DeskVNC</b><span>capture pending</span></div>
+<pre><span class="cm"># download for Windows, macOS or Linux</span>
+https://github.com/psmux/DeskVNC/releases/latest
+
+<span class="cm"># then hand it to Claude Code (macOS path)</span>
+<span class="pr">$</span> claude mcp add deskvnc -- /Applications/DeskVNCViewer.app/Contents/MacOS/dvv mcp --stdio</pre>
+            <dl class="spec"><dt>release</dt><dd>v0.27.10, October 2026</dd><dt>runs on</dt><dd>Windows, macOS, Linux</dd><dt>protocols</dt><dd>VNC (RFB 3.3 to 3.8), RDP, SSH and SFTP</dd><dt>agents</dt><dd>dvv MCP server, stdio or HTTP</dd><dt>license</dt><dd>MIT or Apache 2.0</dd></dl>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="feature-copy">
+      <span class="kicker">02 / remote desktop for people and agents</span>
+      <h2 id="deskvnc-title">DeskVNC</h2>
+      <p class="sub">VNC, RDP and SSH in one native client, with an MCP server for AI agents.</p>
+      <p>Keep every VNC, RDP and SSH host in one library. Tabs split into panes, and each pane can hold a different machine over a different protocol. The protocol cores are written in Rust and frames are painted through WebGL2. Passwords stay in the OS keychain. There is no account and no telemetry.</p>
+      <p>It ships <code>dvv</code>, an MCP server. Claude Code or OpenCode can open a saved machine, read the screen, click and type over the ordinary protocol, with nothing installed on the target. Click into the pane and you have control back.</p>
+      <ul class="meta-row" aria-label="Platforms and license">
+        <li class="chip os win">Windows</li><li class="chip os mac">macOS</li><li class="chip os lin">Linux</li><li class="chip">MIT or Apache 2.0</li><li class="chip"><span data-release="DeskVNC">v0.27.10</span></li>
+      </ul>
+      <div class="proof">
+        <div><b>19 ms</b><span>one observe and act cycle</span></div>
+        <div><b>447/s</b><span>characters typed by <code>dvv_type</code></span></div>
+        <div><b>0.95 s</b><span>one agent, two desktops, both tasks done</span></div>
+      </div>
+      <p class="proof-note">From the DeskVNC README, measured against a 1920x1080 Windows desktop on a LAN.</p>
+
+      <div class="install" data-tabs>
+        <div class="install-tabs" role="tablist" aria-label="Install DeskVNC">
+          <button role="tab" aria-selected="true">Download</button>
+          <button role="tab" aria-selected="false">Claude Code</button>
+          <button role="tab" aria-selected="false">From source</button>
+        </div>
+        <div class="cmd" role="tabpanel"><pre><code>https://github.com/psmux/DeskVNC/releases/latest</code></pre>
+          <p class="install-foot">.exe and .msi for Windows, a universal .dmg for macOS, .deb, .rpm and .AppImage for Linux.</p></div>
+        <div class="cmd" role="tabpanel" hidden><pre><code><span class="pr">$ </span>claude mcp add deskvnc -- /Applications/DeskVNCViewer.app/Contents/MacOS/dvv mcp --stdio</code></pre>
+          <p class="install-foot">macOS path shown. See <a href="https://github.com/psmux/DeskVNC/blob/main/docs/AGENTS.md">docs/AGENTS.md</a> for the others.</p></div>
+        <div class="cmd" role="tabpanel" hidden><pre><code><span class="pr">$ </span>npm install --prefix ui
+<span class="pr">$ </span>cargo install tauri-cli --version "^2"
+<span class="pr">$ </span>cargo tauri build</code></pre></div>
+      </div>
+
+      <div class="links">
+        <a class="btn btn-primary" href="https://github.com/psmux/DeskVNC"><svg aria-hidden="true"><use href="#i-star"/></svg>Star <span class="count" data-stars="DeskVNC">69</span></a>
+        <a class="btn btn-ghost" href="https://github.com/psmux/DeskVNC/releases/latest">Download</a>
+        <a href="/deskvnc/">More about DeskVNC</a>
+        <a href="https://github.com/psmux/DeskVNC/blob/main/docs/AGENTS.md">Agent docs</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GodwinMix ================= -->
+<section class="section" id="godwinmix" aria-labelledby="godwinmix-title">
+  <div class="wrap feature">
+    <div class="feature-media">
+      <div class="media-slot" data-media="GodwinMix" data-variant="feature">
+        <div class="frame">
+          <div class="ph">
+            <div class="ph-bar"><b>GodwinMix</b><span>capture pending</span></div>
+<pre><span class="pr">$</span> git clone https://github.com/psmux/GodwinMix &amp;&amp; cd GodwinMix
+<span class="pr">$</span> docker compose -f deploy/docker/docker-compose.yml up -d --build
+
+<span class="cm"># let an agent run the show</span>
+<span class="pr">$</span> claude mcp add godwinmix -- godwinmix mcp</pre>
+            <dl class="spec"><dt>release</dt><dd>v0.2.1, October 2026</dd><dt>runs on</dt><dd>Linux, macOS, Windows, Docker</dd><dt>inputs</dt><dd>RTMP, SRT, HLS, RTSP, files, web pages</dd><dt>output</dt><dd>one or more RTMP destinations</dd><dt>license</dt><dd>Apache 2.0</dd></dl>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="feature-copy">
+      <span class="kicker">03 / live video</span>
+      <h2 id="godwinmix-title">GodwinMix</h2>
+      <p class="sub">A live video mixer in Rust that keeps the RTMP output running.</p>
+      <p>Sources come in by URL: RTMP, SRT, HLS, RTSP, files, or a web page rendered by a real browser. One goes on programme at a time, and programme goes out to one or more RTMP destinations. The output encoder starts once and never restarts, because switching happens upstream on raw video and audio. Sources can join, drop or fail and the stream keeps going.</p>
+      <p>It is one binary on GStreamer with one HTTP port. The same binary is the <code>gmx</code> command line client and an MCP server, so an agent drives it through the API the web UI uses.</p>
+      <ul class="meta-row" aria-label="Platforms and license">
+        <li class="chip os lin">Linux</li><li class="chip os mac">macOS</li><li class="chip os win">Windows</li><li class="chip os dock">Docker</li><li class="chip">Apache 2.0</li><li class="chip"><span data-release="GodwinMix">v0.2.1</span></li>
+      </ul>
+      <div class="proof">
+        <div><b>30 fps</b><span>held across takes, 0 disconnects</span></div>
+        <div><b>+4 ms</b><span>scheduled cue vs requested time</span></div>
+        <div><b>123</b><span>unit tests on real GStreamer pipelines</span></div>
+      </div>
+      <p class="proof-note">From the GodwinMix README. Tested against mediamtx and node-media-server v4.</p>
+
+      <div class="install" data-tabs>
+        <div class="install-tabs" role="tablist" aria-label="Install GodwinMix">
+          <button role="tab" aria-selected="true">Docker</button>
+          <button role="tab" aria-selected="false">Desktop app</button>
+          <button role="tab" aria-selected="false">AI agent</button>
+        </div>
+        <div class="cmd" role="tabpanel"><pre><code><span class="pr">$ </span>git clone https://github.com/psmux/GodwinMix &amp;&amp; cd GodwinMix
+<span class="pr">$ </span>docker compose -f deploy/docker/docker-compose.yml up -d --build</code></pre></div>
+        <div class="cmd" role="tabpanel" hidden><pre><code>https://github.com/psmux/GodwinMix/releases/latest</code></pre>
+          <p class="install-foot">.exe or .msi on Windows, .dmg on Apple Silicon, .deb and .AppImage on Linux.</p></div>
+        <div class="cmd" role="tabpanel" hidden><pre><code><span class="pr">$ </span>claude mcp add godwinmix -- godwinmix mcp
+<span class="pr">$ </span>godwinmix skill install --for claude</code></pre></div>
+      </div>
+
+      <div class="links">
+        <a class="btn btn-primary" href="https://github.com/psmux/GodwinMix"><svg aria-hidden="true"><use href="#i-star"/></svg>Star on GitHub</a>
+        <a class="btn btn-ghost" href="https://github.com/psmux/GodwinMix/releases/latest">Download</a>
+        <a href="/godwinmix/">More about GodwinMix</a>
+        <a href="https://github.com/psmux/GodwinMix/blob/main/docs/agents.md">Agent playbook</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= Tools ================= -->
+<section class="section" id="tools" aria-labelledby="tools-title">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">04 / terminal tools</span>
+      <h2 id="tools-title">Terminal tools</h2>
+      <!-- GODWIN: rewrite in your voice -->
+      <p>Small TUIs that each do one job. Most install as a single Rust binary from WinGet or crates.io, and several started as things I wanted next to psmux on my own Windows machine.</p>
+    </div>
+
+    <div class="grid">
+
+      <article class="card" data-repo="pstop">
+        <div class="card-media media-slot" data-media="pstop">
+          <div class="ph"><div class="ph-bar"><b>pstop</b><span>capture pending</span></div><pre><span class="pr">PS&gt;</span> pstop --install-alias
+<span class="pr">PS&gt;</span> htop</pre></div>
+        </div>
+        <div class="card-body">
+          <div class="card-title"><h3><a href="/pstop/">pstop</a></h3><span class="stars"><svg aria-hidden="true"><use href="#i-star"/></svg><span data-stars="pstop">255</span></span></div>
+          <p>htop for Windows. Per core CPU bars, memory, GPU and network meters, a process tree, and tabs for disk I/O, per process network, GPU and WSL. 23 color schemes.</p>
+          <ul class="meta-row"><li class="chip os win">Windows 10, 11</li><li class="chip">WinGet</li><li class="chip">Chocolatey</li><li class="chip">crates.io</li></ul>
+          <div class="cmd"><pre><code><span class="pr">PS&gt; </span>winget install marlocarlo.pstop</code></pre></div>
+        </div>
+      </article>
+
+      <article class="card" data-repo="psnet">
+        <div class="card-media media-slot" data-media="psnet">
+          <div class="ph"><div class="ph-bar"><b>psnet</b><span>capture pending</span></div><pre><span class="pr">PS&gt;</span> psnet
+<span class="cm"># nine tabs, no Npcap</span></pre></div>
+        </div>
+        <div class="card-body">
+          <div class="card-title"><h3><a href="/psnet/">psnet</a></h3><span class="stars"><svg aria-hidden="true"><use href="#i-star"/></svg><span data-stars="psnet">148</span></span></div>
+          <p>Terminal network monitor for Windows. Traffic graphs, connections with DNS names, a packet inspector, a per app firewall and a LAN scan, in one 12 MB binary with no Npcap.</p>
+          <ul class="meta-row"><li class="chip os win">Windows 10, 11</li><li class="chip">WinGet</li><li class="chip">crates.io</li></ul>
+          <div class="cmd"><pre><code><span class="pr">PS&gt; </span>winget install marlocarlo.psnet</code></pre></div>
+        </div>
+      </article>
+
+      <article class="card" data-repo="Tmux-Plugin-Panel">
+        <div class="card-media media-slot" data-media="Tmux-Plugin-Panel">
+          <div class="ph"><div class="ph-bar"><b>tmuxpanel</b><span>capture pending</span></div><pre><span class="pr">$</span> tmuxplugins
+<span class="pr">$</span> tmuxthemes</pre></div>
+        </div>
+        <div class="card-body">
+          <div class="card-title"><h3><a href="https://github.com/psmux/Tmux-Plugin-Panel">Tmux Plugin Panel</a></h3><span class="stars"><svg aria-hidden="true"><use href="#i-star"/></svg><span data-stars="Tmux-Plugin-Panel">85</span></span></div>
+          <p>A TUI to browse, install, update and remove tmux plugins and themes, and edit options without memorising <code>set -g</code>. Works with tmux and psmux. Registry of 40+ plugins.</p>
+          <ul class="meta-row"><li class="chip os win">Windows</li><li class="chip os lin">Linux</li><li class="chip os mac">macOS</li></ul>
+          <div class="cmd"><pre><code><span class="pr">$ </span>cargo install tmuxpanel</code></pre></div>
+        </div>
+      </article>
+
+      <article class="card" data-repo="omp-manager">
+        <div class="card-media media-slot" data-media="omp-manager">
+          <div class="ph"><div class="ph-bar"><b>omp-manager</b><span>capture pending</span></div><pre><span class="pr">PS&gt;</span> omp-manager</pre></div>
+        </div>
+        <div class="card-body">
+          <div class="card-title"><h3><a href="https://github.com/psmux/omp-manager">OMP Manager</a></h3><span class="stars"><svg aria-hidden="true"><use href="#i-star"/></svg><span data-stars="omp-manager">72</span></span></div>
+          <p>Sets up Oh My Posh from nothing: installs it, installs a Nerd Font, previews 100+ themes and writes the init line into each of eight shells, PowerShell 7 through Nushell.</p>
+          <ul class="meta-row"><li class="chip os win">Windows</li><li class="chip os lin">Linux</li><li class="chip os mac">macOS</li></ul>
+          <div class="cmd"><pre><code><span class="pr">PS&gt; </span>winget install marlocarlo.OmpManager</code></pre></div>
+        </div>
+      </article>
+
+      <article class="card" data-repo="psmux-plugins">
+        <div class="card-media media-slot" data-media="psmux-plugins">
+          <div class="ph"><div class="ph-bar"><b>~/.psmux.conf</b><span>capture pending</span></div><pre>set -g @plugin 'psmux-plugins/ppm'
+set -g @plugin 'psmux-plugins/psmux-resurrect'
+run '~/.psmux/plugins/ppm/ppm.ps1'
+<span class="cm"># then Prefix + I inside psmux</span></pre></div>
+        </div>
+        <div class="card-body">
+          <div class="card-title"><h3><a href="https://github.com/psmux/psmux-plugins">psmux plugins</a></h3><span class="stars"><svg aria-hidden="true"><use href="#i-star"/></svg><span data-stars="psmux-plugins">39</span></span></div>
+          <p>PPM, a PowerShell port of tpm, plus ports of resurrect, continuum, sensible and vim navigator, and themes such as Catppuccin, Dracula, Nord and Tokyo Night.</p>
+          <ul class="meta-row"><li class="chip os win">Windows</li><li class="chip">PowerShell</li></ul>
+          <div class="cmd"><pre><code><span class="pr">PS&gt; </span>git clone https://github.com/psmux/psmux-plugins.git "$env:TEMP\psmux-plugins" ; Copy-Item "$env:TEMP\psmux-plugins\ppm" "$env:USERPROFILE\.psmux\plugins\ppm" -Recurse ; Remove-Item "$env:TEMP\psmux-plugins" -Recurse -Force</code></pre></div>
+        </div>
+      </article>
+
+      <article class="card" data-repo="TerminalMap">
+        <div class="card-media media-slot" data-media="TerminalMap">
+          <div class="ph"><div class="ph-bar"><b>terminalmap</b><span>capture pending</span></div><pre><span class="pr">$</span> terminalmap
+<span class="cm"># zoom 0 to 18, braille rendering</span></pre></div>
+        </div>
+        <div class="card-body">
+          <div class="card-title"><h3><a href="https://github.com/psmux/TerminalMap">TerminalMap</a></h3><span class="stars"><svg aria-hidden="true"><use href="#i-star"/></svg><span data-stars="TerminalMap">20</span></span></div>
+          <p>OpenStreetMap vector tiles drawn in braille, from world view down to street level. Also a Rust library: drop independent maps with their own markers into any TUI.</p>
+          <ul class="meta-row"><li class="chip os win">Windows</li><li class="chip os lin">Linux</li><li class="chip os mac">macOS</li><li class="chip">APT</li></ul>
+          <div class="cmd"><pre><code><span class="pr">$ </span>cargo install terminalmap</code></pre></div>
+        </div>
+      </article>
+
+      <article class="card" data-repo="Psroot">
+        <div class="card-media media-slot" data-media="Psroot">
+          <div class="ph"><div class="ph-bar"><b>psroot</b><span>capture pending</span></div><pre><span class="pr">PS&gt;</span> psroot shell
+<span class="cm"># AppContainer, Job Objects, no Hyper-V</span></pre></div>
+        </div>
+        <div class="card-body">
+          <div class="card-title"><h3><a href="https://github.com/psmux/Psroot">Psroot</a></h3><span class="stars"><svg aria-hidden="true"><use href="#i-star"/></svg><span data-stars="Psroot">14</span></span></div>
+          <p>Docker style containers on Windows without Hyper-V, WSL or Docker, built on AppContainer and Job Objects. Runs on cloud VMs where nested virtualization is off. Standard tier needs no admin.</p>
+          <ul class="meta-row"><li class="chip os win">Windows 10 1809+</li><li class="chip os lin">Linux</li><li class="chip os mac">macOS</li></ul>
+          <div class="cmd"><pre><code><span class="pr">PS&gt; </span>git clone https://github.com/psmux/Psroot.git
+<span class="pr">PS&gt; </span>cd Psroot
+<span class="pr">PS&gt; </span>cargo build --release</code></pre></div>
+          <p class="note">No release yet. Build from source.</p>
+        </div>
+      </article>
+
+      <article class="card" data-repo="vigil">
+        <div class="card-media media-slot" data-media="vigil">
+          <div class="ph"><div class="ph-bar"><b>vigil</b><span>capture pending</span></div><pre><span class="pr">$</span> sudo cargo run
+<span class="cm"># sudo adds firewall, fail2ban and attack data</span></pre></div>
+        </div>
+        <div class="card-body">
+          <div class="card-title"><h3><a href="https://github.com/psmux/vigil">Vigil</a></h3><span class="stars"><svg aria-hidden="true"><use href="#i-star"/></svg><span data-stars="vigil">4</span></span></div>
+          <p>Security dashboard for Linux servers: a 0 to 100 score, every listening port with a risk badge, fail2ban bans, firewall state and a braille map of where attacks come from.</p>
+          <ul class="meta-row"><li class="chip os lin">Linux</li></ul>
+          <div class="cmd"><pre><code><span class="pr">$ </span>git clone https://github.com/psmux/vigil
+<span class="pr">$ </span>cd vigil
+<span class="pr">$ </span>cargo build
+<span class="pr">$ </span>cargo run</code></pre></div>
+          <p class="note">No release yet. Build from source; the crate called vigil on crates.io is a different project.</p>
+        </div>
+      </article>
+
+      <article class="card" data-repo="tmuxtop">
+        <div class="card-media media-slot" data-media="tmuxtop">
+          <div class="ph"><div class="ph-bar"><b>tmuxtop</b><span>capture pending</span></div><pre><span class="pr">$</span> python tmuxtop.py --backup</pre></div>
+        </div>
+        <div class="card-body">
+          <div class="card-title"><h3><a href="https://github.com/psmux/tmuxtop">TmuxTop</a></h3><span class="stars"><svg aria-hidden="true"><use href="#i-star"/></svg><span data-stars="tmuxtop">2</span></span></div>
+          <p>A top for tmux: CPU and memory for the processes in every session, window and pane, with JSON export and a backup script that rebuilds your sessions. The oldest repo here, from 2024.</p>
+          <ul class="meta-row"><li class="chip">tmux + Python 3</li></ul>
+          <div class="cmd"><pre><code><span class="pr">$ </span>git clone https://github.com/psmux/tmuxtop
+<span class="pr">$ </span>cd tmuxtop
+<span class="pr">$ </span>pip install psutil
+<span class="pr">$ </span>python tmuxtop.py</code></pre></div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<aside class="hood" aria-labelledby="hood-title">
+  <div class="wrap">
+    <span class="kicker" id="hood-title">under the hood</span>
+    <p>psmux builds on two patched crates published from this account: <a href="https://github.com/psmux/portable-pty-patched">portable-pty-psmux</a>, which passes the ConPTY flags psmux needs, and <a href="https://github.com/psmux/vt100-rust-patched">vt100-psmux</a>, a patched fork of vt100-rust. Windows installs come from Scoop buckets for <a href="https://github.com/psmux/scoop-psmux">psmux</a>, <a href="https://github.com/psmux/scoop-terminalmap">TerminalMap</a>, <a href="https://github.com/psmux/scoop-tmuxpanel">Tmux Plugin Panel</a> and <a href="https://github.com/psmux/scoop-omp-manager">OMP Manager</a>, and Debian users get TerminalMap from a signed <a href="https://psmux.github.io/apt-repo/">APT repository</a>.</p>
+  </div>
+</aside>
+
+<footer class="foot">
+  <div class="wrap foot-grid">
+    <div>
+      <div class="brand"><img src="/assets/favicon.svg" alt="" width="28" height="28">psmux</div>
+      <p>Built and maintained by Godwin Sam Josh. psmux has 48 contributors; most of the other projects are one or two people.</p>
+      <!-- GODWIN: rewrite in your voice -->
+      <p>I write the tools I want on my own machines, mostly in Rust, and publish them under MIT or Apache 2.0. Stars and bug reports tell me which ones to keep pushing.</p>
+      <p class="fine">Star counts refresh from the GitHub API. Other numbers were collected in October 2026.</p>
+    </div>
+    <div>
+      <h2>Projects</h2>
+      <ul>
+        <li><a href="https://psmux.pages.dev/">psmux.pages.dev</a></li>
+        <li><a href="/deskvnc/">DeskVNC</a></li>
+        <li><a href="/godwinmix/">GodwinMix</a></li>
+        <li><a href="/pstop/">pstop, htop for Windows</a></li>
+        <li><a href="/psnet/">psnet</a></li>
+        <li><a href="/tmuxtop/">TmuxTop site</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Elsewhere</h2>
+      <ul>
+        <li><a href="https://github.com/psmux">github.com/psmux</a></li>
+        <li><a href="https://github.com/sponsors/psmux">GitHub Sponsors</a></li>
+        <li><a href="https://crates.io/crates/psmux">crates.io</a></li>
+        <li><a href="https://github.com/psmux/psmux/issues">Report a psmux bug</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
