@@ -1,0 +1,988 @@
+{
+  "generated": "2026-10-08",
+  "source": "GitHub API with the psmux token, crates.io API, Chocolatey OData feed, microsoft/winget-pkgs tree, raw README files",
+  "projects": [
+    {
+      "repo": "psmux",
+      "display_name": "psmux",
+      "category": "flagship",
+      "one_liner": "Native tmux for Windows, written in Rust on ConPTY.",
+      "summary": "psmux is a terminal multiplexer for Windows 10 and 11 that drives Windows ConPTY directly and speaks the tmux command language. It reads an existing .tmux.conf, supports tmux themes and installs three identical binaries: psmux, pmux and tmux. It needs no WSL, Cygwin or MSYS2.",
+      "platforms": [
+        "Windows 10",
+        "Windows 11"
+      ],
+      "language": "Rust",
+      "language_note": "GitHub's language bar says PowerShell because the PowerShell test scripts outweigh the Rust source in bytes (10.3 MB vs 8.4 MB). The program itself is Rust.",
+      "license": "MIT",
+      "stars": 3626,
+      "forks": 219,
+      "latest_release": {
+        "tag": "v3.3.8",
+        "date": "2026-08-18"
+      },
+      "created_at": "2025-11-30",
+      "pushed_at": "2026-10-07",
+      "topics": [
+        "tmux",
+        "tmux-windows",
+        "terminal-multiplexer",
+        "powershell",
+        "rust",
+        "windows-terminal"
+      ],
+      "install": [
+        {
+          "method": "WinGet",
+          "command": "winget install psmux"
+        },
+        {
+          "method": "Cargo",
+          "command": "cargo install psmux"
+        },
+        {
+          "method": "Scoop",
+          "command": "scoop bucket add psmux https://github.com/psmux/scoop-psmux\nscoop install psmux"
+        },
+        {
+          "method": "Chocolatey",
+          "command": "choco install psmux"
+        },
+        {
+          "method": "From source",
+          "command": "git clone https://github.com/psmux/psmux.git\ncd psmux\ncargo build --release"
+        }
+      ],
+      "first_run": "psmux new-session -s work",
+      "key_features": [
+        "Split panes, multiple windows, detach and reattach sessions, all native on Windows",
+        "Reads .tmux.conf; 90+ tmux compatible commands and 140+ format variables",
+        "Full mouse support, including over SSH on supported Windows builds",
+        "Copy mode with 53 vim keys",
+        "Claude Code agent teams: teammates spawn in their own psmux panes with no extra config",
+        "Control mode (-C and -CC) for IDE and plugin authors, including the iTerm2 tmux gateway"
+      ],
+      "proof_points": [
+        "3,626 GitHub stars and 219 forks (API, 2026-10-08)",
+        "48 contributors (GitHub contributors API, anonymous included)",
+        "38 GitHub releases; release assets downloaded 133,111 times in total",
+        "crates.io: 3,876 downloads of the psmux crate",
+        "Chocolatey: 8,678 total package downloads, latest 3.3.8",
+        "WinGet: package marlocarlo.psmux, 17 versions published, latest 3.3.8",
+        "Scoop bucket psmux/scoop-psmux, manifest at 3.3.8",
+        "23 pages in docs/ plus an llms.txt for AI assistants",
+        "Measured in docs/performance.md: CLI round trips such as list-panes at about 18 ms median"
+      ],
+      "links": {
+        "repo": "https://github.com/psmux/psmux",
+        "homepage": "https://psmux.pages.dev/",
+        "docs": "https://github.com/psmux/psmux/blob/master/docs/README.md",
+        "claude_code_guide": "https://github.com/psmux/psmux/blob/master/docs/claude-code.md",
+        "crates_io": "https://crates.io/crates/psmux",
+        "chocolatey": "https://community.chocolatey.org/packages/psmux",
+        "winget": "https://github.com/microsoft/winget-pkgs/tree/master/manifests/m/marlocarlo/psmux",
+        "llms_txt": "https://github.com/psmux/psmux/blob/master/llms.txt",
+        "releases": "https://github.com/psmux/psmux/releases"
+      },
+      "existing_media": [
+        "https://raw.githubusercontent.com/psmux/psmux/master/demo.gif"
+      ],
+      "media_note": "The README also embeds https://psmux.pages.dev/stats-card.svg, a live stats card, not a product capture.",
+      "search_keywords": [
+        "tmux for windows",
+        "tmux windows native",
+        "tmux powershell",
+        "terminal multiplexer windows",
+        "tmux without wsl",
+        "split terminal windows powershell",
+        "tmux alternative windows",
+        "claude code agent teams windows",
+        "tmux.conf windows"
+      ],
+      "caveats": []
+    },
+    {
+      "repo": "psmux-plugins",
+      "display_name": "psmux plugins",
+      "category": "flagship",
+      "one_liner": "Plugin manager and tmux plugin ports for psmux, in PowerShell.",
+      "summary": "The plugin collection for psmux. PPM is a port of tpm, and the repo holds PowerShell rewrites of well known tmux plugins such as resurrect, continuum, sensible and vim navigator, plus a set of theme plugins. Plugins are declared in ~/.psmux.conf with set -g @plugin and installed from inside psmux with Prefix + I.",
+      "platforms": [
+        "Windows"
+      ],
+      "language": "PowerShell",
+      "license": "MIT (stated in README; the repo has no LICENSE file and GitHub detects none)",
+      "stars": 39,
+      "forks": 8,
+      "latest_release": null,
+      "created_at": "2026-02-25",
+      "pushed_at": "2026-09-14",
+      "install": [
+        {
+          "method": "Install PPM",
+          "command": "git clone https://github.com/psmux/psmux-plugins.git \"$env:TEMP\\psmux-plugins\" ; Copy-Item \"$env:TEMP\\psmux-plugins\\ppm\" \"$env:USERPROFILE\\.psmux\\plugins\\ppm\" -Recurse ; Remove-Item \"$env:TEMP\\psmux-plugins\" -Recurse -Force"
+        },
+        {
+          "method": "Configure (~/.psmux.conf)",
+          "command": "set -g @plugin 'psmux-plugins/ppm'\nset -g @plugin 'psmux-plugins/psmux-sensible'\nset -g @plugin 'psmux-plugins/psmux-resurrect'\nset -g @plugin 'psmux-plugins/psmux-pain-control'\n\n# Initialize PPM (keep at the very bottom)\nrun '~/.psmux/plugins/ppm/ppm.ps1'"
+        },
+        {
+          "method": "Install plugins",
+          "command": "Start psmux and press Prefix + I"
+        }
+      ],
+      "key_features": [
+        "PPM plugin manager: Prefix + I installs, Prefix + U updates, Prefix + M removes unused",
+        "psmux-resurrect and psmux-continuum save and restore sessions",
+        "psmux-vim-navigator moves between panes and vim splits with Ctrl h/j/k/l",
+        "Status bar plugins for CPU, memory and battery",
+        "Theme plugins including Catppuccin, Dracula, Nord, Tokyo Night, Gruvbox and Warm Burnout",
+        "Plugin developer guide with a bash to PowerShell translation reference"
+      ],
+      "proof_points": [
+        "39 stars, 8 forks",
+        "Repo tree holds PPM plus 12 plugins and 10 theme plugins (README tables list 11 plugins and 6 themes; git-status, net-speed, everforest, kanagawa, onedark and rosepine exist in the tree but are not in the README tables)",
+        "psmux docs/plugins.md links to this repo throughout"
+      ],
+      "links": {
+        "repo": "https://github.com/psmux/psmux-plugins",
+        "developer_guide": "https://github.com/psmux/psmux-plugins/blob/main/PLUGIN_DEVELOPER_GUIDE.md",
+        "psmux_plugins_doc": "https://github.com/psmux/psmux/blob/master/docs/plugins.md"
+      },
+      "existing_media": [],
+      "search_keywords": [
+        "psmux plugins",
+        "tmux plugins windows",
+        "tpm for windows",
+        "tmux resurrect windows",
+        "tmux themes powershell",
+        "catppuccin tmux windows",
+        "tmux plugin manager powershell"
+      ],
+      "caveats": [
+        "No LICENSE file in the repo; only the README says MIT.",
+        "README says 'PowerShell 7 comes with psmux'; psmux docs list PowerShell 7 as recommended and installed separately. Do not repeat that line."
+      ]
+    },
+    {
+      "repo": "DeskVNC",
+      "display_name": "DeskVNC",
+      "category": "product",
+      "one_liner": "VNC, RDP and SSH client with an MCP server for AI agents.",
+      "summary": "DeskVNC is a native remote desktop client for Windows, macOS and Linux, written in Rust on Tauri 2, that keeps VNC, RDP and SSH hosts in one library. It ships dvv, an MCP server that lets an AI agent open a saved machine, read the screen, click and type over the ordinary protocol, with nothing installed on the target. A person can click into the pane and take control back at any point.",
+      "platforms": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "platform_note": "Release v0.27.10 assets: Windows .exe and .msi, macOS universal .dmg, Linux .deb, .rpm and .AppImage. DeskVNC Support (attended support app) ships for macOS and Windows only.",
+      "language": "Rust",
+      "language_note": "Rust protocol cores and backend, TypeScript web UI inside Tauri 2.",
+      "license": "MIT OR Apache-2.0 (dual; README and LICENSE-MIT plus LICENSE-APACHE; GitHub shows Apache-2.0)",
+      "stars": 69,
+      "forks": 6,
+      "latest_release": {
+        "tag": "v0.27.10",
+        "date": "2026-10-07"
+      },
+      "created_at": "2026-07-30",
+      "pushed_at": "2026-10-07",
+      "install": [
+        {
+          "method": "Download",
+          "command": "https://github.com/psmux/DeskVNC/releases/latest"
+        },
+        {
+          "method": "Register the MCP server with Claude Code (macOS path)",
+          "command": "claude mcp add deskvnc -- /Applications/DeskVNCViewer.app/Contents/MacOS/dvv mcp --stdio"
+        },
+        {
+          "method": "From source",
+          "command": "npm install --prefix ui\ncargo install tauri-cli --version \"^2\"   # if you do not have it\n\ncargo tauri dev      # development, with hot reload\ncargo tauri build    # production bundle"
+        }
+      ],
+      "key_features": [
+        "Own VNC core (RFB 3.3 to 3.8, VeNCrypt, RA2 and Apple auth), RDP core (NLA, RemoteApp) and SSH core (SFTP, tunnels, PuTTY key files)",
+        "Tabs split into panes, each pane holding a different machine and protocol",
+        "Frames decoded in Rust and painted through WebGL2; H.264 hardware decode where the webview offers it",
+        "Passwords in the OS keychain (Keychain, Credential Manager, Secret Service); no account and no telemetry",
+        "Network discovery: mDNS, subnet scan with banner fingerprinting, LLMNR, NetBIOS, Wake on LAN",
+        "dvv MCP server: open, look, click, type, file transfer, SSH terminal, groups of machines, with leases and stale screen fences"
+      ],
+      "proof_points": [
+        "Measured against a 1920x1080 Windows desktop on a LAN: one observe then act cycle in 19 ms, about 52 actions per second",
+        "dvv_screen at 0.25 scale in 25 ms; dvv_type at 447 characters per second",
+        "One agent drove two desktops at once and finished both tasks in 0.95 seconds",
+        "Verified MCP clients: Claude Code and OpenCode over stdio and HTTP",
+        "25 GitHub releases since 2026-07-30; release assets downloaded 774 times",
+        "macOS build signed and notarized; Windows installer signed",
+        "Source registers 25 dvv_ tool names (README documents the main ones)"
+      ],
+      "links": {
+        "repo": "https://github.com/psmux/DeskVNC",
+        "releases": "https://github.com/psmux/DeskVNC/releases/latest",
+        "install_docs": "https://github.com/psmux/DeskVNC/blob/main/docs/INSTALL.md",
+        "agents_docs": "https://github.com/psmux/DeskVNC/blob/main/docs/AGENTS.md",
+        "architecture": "https://github.com/psmux/DeskVNC/blob/main/docs/ARCHITECTURE.md",
+        "changelog": "https://github.com/psmux/DeskVNC/blob/main/CHANGELOG.md",
+        "sponsors": "https://github.com/sponsors/psmux"
+      },
+      "existing_media": [
+        "https://raw.githubusercontent.com/psmux/DeskVNC/main/docs/images/library.png",
+        "https://raw.githubusercontent.com/psmux/DeskVNC/main/docs/images/session.png",
+        "https://raw.githubusercontent.com/psmux/DeskVNC/main/docs/images/split.png",
+        "https://raw.githubusercontent.com/psmux/DeskVNC/main/docs/images/agent.png"
+      ],
+      "media_note": "README says these are real builds against demo servers on loopback; desktop credits are in docs/images/CREDITS.md and should travel with any reuse.",
+      "search_keywords": [
+        "vnc client mac",
+        "rdp client for mac and linux",
+        "open source remote desktop manager",
+        "vnc rdp ssh in one app",
+        "mcp remote desktop",
+        "ai agent control windows desktop",
+        "computer use over vnc",
+        "claude code remote desktop",
+        "rust vnc client"
+      ],
+      "caveats": [
+        "README contains a 'Support and commercial use' section offering paid support; per the brief, do not mention pricing or packages on the site."
+      ]
+    },
+    {
+      "repo": "GodwinMix",
+      "display_name": "GodwinMix",
+      "category": "product",
+      "one_liner": "Live video mixer in Rust that keeps the RTMP output running.",
+      "summary": "GodwinMix takes several sources (RTMP cameras, files, HLS, SRT, web pages), puts one on programme at a time, and sends programme to one or more RTMP destinations without the output stopping while sources are added, removed or fail. It is one Rust binary on GStreamer with one HTTP port, and that binary is also the gmx command line client and an MCP server for AI agents. It was called LiveboxMix until 0.2.",
+      "platforms": [
+        "Linux",
+        "macOS (Apple Silicon for the .dmg)",
+        "Windows",
+        "Docker"
+      ],
+      "language": "Rust",
+      "license": "Apache-2.0",
+      "stars": 1,
+      "forks": 0,
+      "latest_release": {
+        "tag": "v0.2.1",
+        "date": "2026-10-07"
+      },
+      "created_at": "2026-09-15",
+      "pushed_at": "2026-10-07",
+      "install": [
+        {
+          "method": "Docker (headless quickstart)",
+          "command": "git clone https://github.com/psmux/GodwinMix && cd GodwinMix\ndocker compose -f deploy/docker/docker-compose.yml up -d --build"
+        },
+        {
+          "method": "Docker image",
+          "command": "docker run -d --name godwinmix --shm-size 1g \\\n  -p 127.0.0.1:8080:8080 -e GODWINMIX_TOKEN=\"$TOKEN\" \\\n  ghcr.io/psmux/godwinmix:latest"
+        },
+        {
+          "method": "Desktop app",
+          "command": "https://github.com/psmux/GodwinMix/releases/latest (.exe or .msi on Windows, .dmg on Apple Silicon, .deb, .AppImage)"
+        },
+        {
+          "method": "From source",
+          "command": "brew install gstreamer\ncargo install --git https://github.com/psmux/GodwinMix godwinmix\n\ngodwinmix --probe\ngodwinmix"
+        },
+        {
+          "method": "Connect an AI agent",
+          "command": "claude mcp add godwinmix -- godwinmix mcp\ngodwinmix skill install --for claude"
+        }
+      ],
+      "key_features": [
+        "Sources chosen by URL: RTMP, HLS, DASH, RTSP, SRT, UDP, RTP, files, exec: commands and web pages rendered by a real browser",
+        "Output encoder starts once and never restarts; switching happens upstream on raw video and audio",
+        "Hardware codecs picked at startup: NVIDIA, VA, Media Foundation, VideoToolbox, or software x264",
+        "Everything is one HTTP call; gmx ctl scripts it; web UI, desktop app and MCP server use the same public API",
+        "Plugins run beside the core through a public plugin protocol, with an optional WebAssembly host",
+        "Ad breaks played immediately or on a given frame, with auto return to the camera"
+      ],
+      "proof_points": [
+        "123 unit tests that build real GStreamer pipelines, no mocks",
+        "Tested on mediamtx and node-media-server v4: programme held exactly 30 fps across takes, 0 disconnects",
+        "Scheduled cue landed +4 ms from the requested time (one frame is 33 ms)",
+        "Docker quickstart is timed in CI on every push; the claim is under five minutes and the job fails if not",
+        "Trimmed GStreamer runtime 84 MB; GodwinMix.app 108 MB on an Apple M4 Pro",
+        "api_level 1 frozen for breaking changes, written on the front page",
+        "Release v0.2.1 ships builds for Windows, macOS (arm64) and Linux (x86_64 and aarch64)"
+      ],
+      "links": {
+        "repo": "https://github.com/psmux/GodwinMix",
+        "releases": "https://github.com/psmux/GodwinMix/releases/latest",
+        "docs": "https://github.com/psmux/GodwinMix/tree/main/docs",
+        "agents_playbook": "https://github.com/psmux/GodwinMix/blob/main/docs/agents.md",
+        "http_api": "https://github.com/psmux/GodwinMix/blob/main/docs/reference/http-api.md",
+        "container": "ghcr.io/psmux/godwinmix:latest"
+      },
+      "existing_media": [],
+      "media_note": "README has no screenshots or video. The repo has an app icon (tauri-app/icons/icon.png) and overlay graphics under graphics/, which are content assets, not product captures. Do not use anything from ~/workspace/GodwinMix-GodwinOTT-Demo.",
+      "search_keywords": [
+        "open source live video mixer",
+        "rtmp switcher",
+        "headless obs alternative",
+        "gstreamer video mixer",
+        "live stream switcher server",
+        "rtmp restream multiple destinations",
+        "ai director live stream",
+        "mcp video mixer"
+      ],
+      "caveats": [
+        "README says the repository is four crates; the repo now has 12 crates under crates/. Do not quote 'four crates'.",
+        "No footprint numbers are published yet (README says so). Do not invent CPU or memory figures.",
+        "1 star; not a social proof candidate yet."
+      ]
+    },
+    {
+      "repo": "pstop",
+      "display_name": "pstop",
+      "category": "terminal",
+      "one_liner": "htop for Windows: a terminal system monitor written in Rust.",
+      "summary": "pstop is an htop style process viewer for Windows 10 and 11. It shows per core CPU bars, memory, swap, network and GPU meters and a process tree, with extra tabs for disk I/O, per process network, GPU and processes inside WSL. Every install method also gives you an htop command.",
+      "platforms": [
+        "Windows 10",
+        "Windows 11"
+      ],
+      "language": "Rust",
+      "license": "MIT",
+      "stars": 255,
+      "forks": 11,
+      "latest_release": {
+        "tag": "v0.5.4",
+        "date": "2026-04-18"
+      },
+      "created_at": "2026-02-07",
+      "pushed_at": "2026-10-07",
+      "install": [
+        {
+          "method": "WinGet",
+          "command": "winget install marlocarlo.pstop"
+        },
+        {
+          "method": "Chocolatey",
+          "command": "choco install pstop"
+        },
+        {
+          "method": "Cargo",
+          "command": "cargo install pstop"
+        },
+        {
+          "method": "From source",
+          "command": "cargo install --git https://github.com/psmux/pstop"
+        },
+        {
+          "method": "Add htop alias",
+          "command": "pstop --install-alias"
+        }
+      ],
+      "key_features": [
+        "Per core CPU bars, plus memory, swap, network, GPU and VRAM meters",
+        "Five tabs: Main, I/O, Net (per process bandwidth, no admin), GPU, WSL",
+        "Tree view, search, filter, kill, priority and CPU affinity",
+        "F2 setup menu for meters, columns and 15 display options",
+        "23 color schemes including the 16 Windows Terminal schemes",
+        "Mouse support and opt in vim keys; about 1 MB single binary"
+      ],
+      "proof_points": [
+        "255 stars, 11 forks",
+        "13 GitHub releases; release assets downloaded 10,056 times",
+        "crates.io: 951 downloads",
+        "WinGet marlocarlo.pstop with 11 versions; Chocolatey 0.5.4 (43 downloads)"
+      ],
+      "links": {
+        "repo": "https://github.com/psmux/pstop",
+        "homepage": "https://crates.io/crates/pstop",
+        "crates_io": "https://crates.io/crates/pstop",
+        "chocolatey": "https://community.chocolatey.org/packages/pstop",
+        "winget": "https://github.com/microsoft/winget-pkgs/tree/master/manifests/m/marlocarlo/pstop"
+      },
+      "existing_media": [
+        "https://raw.githubusercontent.com/psmux/pstop/master/pstop-demo.gif"
+      ],
+      "search_keywords": [
+        "htop for windows",
+        "htop windows",
+        "htop alternative windows",
+        "top command windows",
+        "task manager in terminal",
+        "powershell process monitor",
+        "windows system monitor cli",
+        "gpu usage per process terminal"
+      ],
+      "caveats": [
+        "The repo description and the psmux README say '7 color schemes'; the pstop README says 23. Use 23."
+      ]
+    },
+    {
+      "repo": "psnet",
+      "display_name": "PSNET",
+      "category": "terminal",
+      "one_liner": "Terminal network monitor for Windows with nine tabs and no Npcap.",
+      "summary": "psnet is a TUI network monitor for Windows 10 and 11 built in Rust. One psnet.exe of about 12 MB has nine tabs covering traffic graphs, connections with DNS names, listening servers, a packet inspector, a topology view, alerts, a per app firewall, LAN devices and network adapters. It uses built in Windows APIs and raw sockets, so it needs no Npcap or WinPcap.",
+      "platforms": [
+        "Windows 10",
+        "Windows 11"
+      ],
+      "language": "Rust",
+      "license": "MIT",
+      "stars": 148,
+      "forks": 7,
+      "latest_release": {
+        "tag": "v1.1.0",
+        "date": "2026-08-10"
+      },
+      "created_at": "2026-02-12",
+      "pushed_at": "2026-10-07",
+      "install": [
+        {
+          "method": "Cargo",
+          "command": "cargo install psnet"
+        },
+        {
+          "method": "WinGet",
+          "command": "winget install marlocarlo.psnet",
+          "warning": "README says 'winget install psmux.psnet', but the published WinGet id is marlocarlo.psnet (verified in microsoft/winget-pkgs). Use marlocarlo.psnet."
+        },
+        {
+          "method": "Chocolatey",
+          "command": "choco install psnet",
+          "warning": "Not found on the Chocolatey community feed on 2026-10-08. Leave out until it is approved."
+        },
+        {
+          "method": "Binary",
+          "command": "https://github.com/psmux/psnet/releases/latest"
+        },
+        {
+          "method": "From source",
+          "command": "git clone https://github.com/psmux/psnet.git\ncd psnet\ncargo build --release\n.\\target\\release\\psnet.exe"
+        }
+      ],
+      "key_features": [
+        "Dashboard with traffic graph, world map of connections and top apps by bandwidth",
+        "Connections with DNS resolved hostnames and the real service behind svchost",
+        "Servers tab fingerprints 200+ server types and matches 6,500+ Wappalyzer signatures",
+        "Packet inspector with protocol dissection and hex view (raw sockets, needs Administrator)",
+        "Per app firewall block and allow from the TUI",
+        "LAN device scan with a 35,000 entry MAC vendor database; GeoIP embedded, no network lookups"
+      ],
+      "proof_points": [
+        "148 stars, 7 forks",
+        "3 GitHub releases; release assets downloaded 2,854 times",
+        "crates.io: 455 downloads",
+        "WinGet marlocarlo.psnet, 3 versions",
+        "About 12 MB binary with four databases compiled in"
+      ],
+      "links": {
+        "repo": "https://github.com/psmux/psnet",
+        "crates_io": "https://crates.io/crates/psnet",
+        "winget": "https://github.com/microsoft/winget-pkgs/tree/master/manifests/m/marlocarlo/psnet",
+        "releases": "https://github.com/psmux/psnet/releases/latest"
+      },
+      "existing_media": [
+        "https://raw.githubusercontent.com/psmux/psnet/master/image.png"
+      ],
+      "search_keywords": [
+        "network monitor windows terminal",
+        "glasswire alternative",
+        "wireshark without npcap",
+        "per app bandwidth monitor windows",
+        "tui network monitor",
+        "netstat with process names windows",
+        "block app internet windows firewall cli",
+        "which apps use my internet windows"
+      ],
+      "caveats": [
+        "WinGet id mismatch in README (see install warning).",
+        "Chocolatey package not live."
+      ]
+    },
+    {
+      "repo": "vigil",
+      "display_name": "Vigil",
+      "category": "terminal",
+      "one_liner": "Terminal security dashboard for Linux servers, written in Rust.",
+      "summary": "Vigil is a TUI for Linux servers that shows a 0 to 100 security score, a braille world map of attack origins, every listening port with a risk badge, fail2ban bans and firewall state. It reads /proc, auth.log or journalctl, fail2ban and UFW, iptables or nftables, with GeoIP data embedded. The README presents it as the Linux counterpart to psnet.",
+      "platforms": [
+        "Linux"
+      ],
+      "language": "Rust",
+      "license": "MIT",
+      "stars": 4,
+      "forks": 1,
+      "latest_release": null,
+      "created_at": "2026-03-20",
+      "pushed_at": "2026-10-07",
+      "install": [
+        {
+          "method": "From source",
+          "command": "git clone https://github.com/psmux/vigil\ncd vigil\ncargo build\ncargo run"
+        },
+        {
+          "method": "crates.io (as written in README)",
+          "command": "cargo install vigil",
+          "warning": "BROKEN: the crates.io name 'vigil' belongs to an unrelated project (Metaswitch/vigil, created 2018). This command installs someone else's crate."
+        },
+        {
+          "method": "Prebuilt binary (as written in README)",
+          "command": "curl -fsSL https://github.com/psmux/vigil/releases/latest/download/vigil-linux-amd64 \\\n  -o /usr/local/bin/vigil && chmod +x /usr/local/bin/vigil",
+          "warning": "BROKEN: the repo has no releases, so this URL returns 404."
+        }
+      ],
+      "key_features": [
+        "Six views: Command Center, Attack Radar, Doors, Network Pulse, Geography, System",
+        "Security score from 0 to 100 weighted across ports, firewall, SSH hardening and more",
+        "Doors view lists every listening port with bind address, auth status and risk",
+        "24 hour attack heatmap and top attackers by country",
+        "fail2ban and UFW, iptables or nftables integration",
+        "Basic views run without root; sudo adds firewall, fail2ban and attack detection"
+      ],
+      "proof_points": [
+        "4 stars, 1 fork",
+        "No releases yet"
+      ],
+      "links": {
+        "repo": "https://github.com/psmux/vigil"
+      },
+      "existing_media": [],
+      "media_note": "README shows only an ASCII mockup in a code block. Its logo URL (raw .../vigil/main/.github/vigil-logo.svg) returns 404 on both main and master.",
+      "search_keywords": [
+        "linux server security dashboard",
+        "fail2ban dashboard",
+        "ssh brute force monitor",
+        "check open ports linux server",
+        "terminal security monitor",
+        "ufw dashboard",
+        "attack map terminal"
+      ],
+      "caveats": [
+        "Only working install path is building from source. Do not show 'cargo install vigil' on the site.",
+        "README links to crates.io/crates/vigil, which is the unrelated Metaswitch crate."
+      ]
+    },
+    {
+      "repo": "TerminalMap",
+      "display_name": "TerminalMap",
+      "category": "terminal",
+      "one_liner": "OpenStreetMap in the terminal, as an app and a Rust library.",
+      "summary": "TerminalMap renders OpenStreetMap vector tiles as braille or ASCII art in any terminal, with keyboard and mouse pan and zoom from world view down to street level. It is also an embeddable Rust library: each MapState is an independent map with its own markers and camera. Tiles come from OpenFreeMap with no API key, and low zoom tiles are embedded for offline use.",
+      "platforms": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "platform_note": "Package managers: WinGet, Scoop and Cargo on Windows; an APT repo for Debian and Ubuntu amd64; Cargo elsewhere.",
+      "language": "Rust",
+      "license": "MIT",
+      "stars": 20,
+      "forks": 2,
+      "latest_release": {
+        "tag": "v0.1.0",
+        "date": "2026-03-21"
+      },
+      "created_at": "2026-03-21",
+      "pushed_at": "2026-10-07",
+      "install": [
+        {
+          "method": "Cargo",
+          "command": "cargo install terminalmap"
+        },
+        {
+          "method": "WinGet",
+          "command": "winget install psmux.TerminalMap"
+        },
+        {
+          "method": "Scoop",
+          "command": "scoop bucket add terminalmap https://github.com/psmux/scoop-terminalmap\nscoop install terminalmap"
+        },
+        {
+          "method": "APT (Debian/Ubuntu)",
+          "command": "curl -fsSL https://psmux.github.io/apt-repo/gpg.key | sudo gpg --dearmor -o /usr/share/keyrings/terminalmap.gpg\necho \"deb [signed-by=/usr/share/keyrings/terminalmap.gpg] https://psmux.github.io/apt-repo stable main\" | sudo tee /etc/apt/sources.list.d/terminalmap.list\nsudo apt update && sudo apt install terminalmap"
+        },
+        {
+          "method": "Chocolatey",
+          "command": "choco install terminalmap",
+          "warning": "Not found on the Chocolatey community feed on 2026-10-08. Leave out until it is approved."
+        },
+        {
+          "method": "From source",
+          "command": "git clone https://github.com/psmux/TerminalMap.git\ncd TerminalMap\ncargo run --release"
+        }
+      ],
+      "key_features": [
+        "Braille rendering at 2x8 subpixels per cell, zoom 0 to 18",
+        "Full Mapbox Vector Tile parsing and Mapbox GL style support",
+        "Label collision detection and filled polygons",
+        "Markers with shapes, colors and blink or pulse animations",
+        "Scriptable camera with fly to animation and a globe tour",
+        "Embeddable MapState API; several independent maps per app"
+      ],
+      "proof_points": [
+        "20 stars, 2 forks",
+        "Release v0.1.0 assets downloaded 471 times; crates.io 162 downloads",
+        "Published on WinGet (psmux.TerminalMap), Scoop and a self hosted APT repo",
+        "Inspired by mapscii (credited in README)"
+      ],
+      "links": {
+        "repo": "https://github.com/psmux/TerminalMap",
+        "crates_io": "https://crates.io/crates/terminalmap",
+        "apt_repo": "https://psmux.github.io/apt-repo/",
+        "winget": "https://github.com/microsoft/winget-pkgs/tree/master/manifests/p/psmux/TerminalMap"
+      },
+      "existing_media": [
+        "https://raw.githubusercontent.com/psmux/TerminalMap/master/screenshot.png"
+      ],
+      "search_keywords": [
+        "map in terminal",
+        "terminal map viewer",
+        "openstreetmap terminal",
+        "mapscii alternative",
+        "rust tui map widget",
+        "ratatui map",
+        "braille map cli",
+        "ascii world map"
+      ],
+      "caveats": [
+        "The APT repo lives at psmux.github.io/apt-repo, a path under the new site's domain. See the site warning in facts.md."
+      ]
+    },
+    {
+      "repo": "Tmux-Plugin-Panel",
+      "display_name": "Tmux Plugin Panel",
+      "category": "terminal",
+      "one_liner": "TUI plugin and theme manager for tmux and psmux.",
+      "summary": "Tmux Plugin Panel (binary name tmuxpanel) is a terminal UI for browsing, installing, updating and removing tmux plugins and themes, and for editing tmux options without memorising set -g syntax. It ships with a curated registry of 40+ plugins, searches GitHub for more, and detects both tmux and psmux installs. It installs three commands: tmuxpanel, tmuxplugins and tmuxthemes.",
+      "platforms": [
+        "Windows (x64, x86, ARM64)",
+        "Linux (x64, ARM64)",
+        "macOS (Intel, Apple Silicon)"
+      ],
+      "language": "Rust",
+      "license": "MIT",
+      "stars": 85,
+      "forks": 0,
+      "latest_release": {
+        "tag": "v0.1.1",
+        "date": "2026-03-04"
+      },
+      "created_at": "2026-02-25",
+      "pushed_at": "2026-10-07",
+      "install": [
+        {
+          "method": "Cargo",
+          "command": "cargo install tmuxpanel"
+        },
+        {
+          "method": "WinGet",
+          "command": "winget install marlocarlo.tmuxpanel"
+        },
+        {
+          "method": "Scoop",
+          "command": "scoop bucket add tmuxpanel https://github.com/marlocarlo/scoop-tmuxpanel\nscoop install tmuxpanel",
+          "warning": "URL uses the old marlocarlo account and works through GitHub's rename redirect. The canonical bucket is https://github.com/psmux/scoop-tmuxpanel."
+        },
+        {
+          "method": "Chocolatey",
+          "command": "choco install tmuxpanel",
+          "warning": "Not found on the Chocolatey community feed on 2026-10-08. Leave out until it is approved."
+        },
+        {
+          "method": "From source",
+          "command": "git clone https://github.com/marlocarlo/Tmux-Plugin-Panel.git\ncd Tmux-Plugin-Panel\ncargo build --release\n./target/release/tmuxpanel"
+        }
+      ],
+      "key_features": [
+        "Browse a curated registry of 40+ plugins by category, with an embedded offline copy",
+        "Search GitHub for any tmux plugin",
+        "One key install, update, update all, remove and orphan cleanup",
+        "Theme gallery with preview and switch",
+        "Config editor for tmux.conf and psmux.conf, with reset to defaults",
+        "Auto detects tmux and psmux binaries and config files"
+      ],
+      "proof_points": [
+        "85 stars",
+        "2 GitHub releases; release assets downloaded 2,435 times",
+        "crates.io: 486 downloads (crate tmuxpanel)",
+        "WinGet marlocarlo.tmuxpanel; Scoop bucket psmux/scoop-tmuxpanel at 0.1.1",
+        "Prebuilt binaries for 7 OS and CPU combinations"
+      ],
+      "links": {
+        "repo": "https://github.com/psmux/Tmux-Plugin-Panel",
+        "crates_io": "https://crates.io/crates/tmuxpanel",
+        "registry_format": "https://github.com/psmux/Tmux-Plugin-Panel/blob/master/REGISTRY_FORMAT.md"
+      },
+      "existing_media": [
+        "https://raw.githubusercontent.com/psmux/Tmux-Plugin-Panel/master/screenshot.png"
+      ],
+      "search_keywords": [
+        "tmux plugin manager",
+        "tpm alternative",
+        "tmux themes",
+        "install tmux plugins",
+        "tmux plugin manager tui",
+        "catppuccin tmux install",
+        "tmux config editor",
+        "psmux themes"
+      ],
+      "caveats": [
+        "README links use github.com/marlocarlo/... (old account name). They redirect today. Use psmux URLs on the site."
+      ]
+    },
+    {
+      "repo": "omp-manager",
+      "display_name": "OMP Manager",
+      "category": "terminal",
+      "one_liner": "Setup wizard TUI for Oh My Posh themes, fonts and shells.",
+      "summary": "OMP Manager is a terminal UI that sets up Oh My Posh from nothing: it installs Oh My Posh, installs a Nerd Font, lets you preview and apply one of 100+ themes, and writes the init line into each shell profile it finds. It supports eight shells, from PowerShell 7 to Nushell and Elvish.",
+      "platforms": [
+        "Windows (x64, x86, ARM64)",
+        "Linux (x64, ARM64)",
+        "macOS (Intel, Apple Silicon)"
+      ],
+      "language": "Rust",
+      "license": "MIT",
+      "stars": 72,
+      "forks": 0,
+      "latest_release": {
+        "tag": "v0.1.2",
+        "date": "2026-03-03"
+      },
+      "created_at": "2026-03-03",
+      "pushed_at": "2026-10-07",
+      "install": [
+        {
+          "method": "Cargo",
+          "command": "cargo install omp-manager"
+        },
+        {
+          "method": "WinGet",
+          "command": "winget install marlocarlo.OmpManager"
+        },
+        {
+          "method": "Chocolatey",
+          "command": "choco install omp-manager"
+        },
+        {
+          "method": "Scoop",
+          "command": "scoop bucket add omp-manager https://github.com/marlocarlo/scoop-omp-manager\nscoop install omp-manager",
+          "warning": "Old marlocarlo URL, works by redirect. Canonical bucket: https://github.com/psmux/scoop-omp-manager."
+        }
+      ],
+      "key_features": [
+        "Four step setup wizard: install Oh My Posh, Nerd Font, theme, shells",
+        "Theme browser with 100+ themes, categories, live search and in terminal preview",
+        "Curated list of 18 Nerd Fonts",
+        "Configures PowerShell 7, Windows PowerShell, Bash, Zsh, Fish, Nushell, Cmd (Clink) and Elvish",
+        "Full mouse support",
+        "Statically linked Windows binaries, no VC runtime needed"
+      ],
+      "proof_points": [
+        "72 stars",
+        "2 GitHub releases; release assets downloaded 1,399 times",
+        "crates.io: 391 downloads",
+        "WinGet marlocarlo.OmpManager, Chocolatey 0.1.2, Scoop bucket at 0.1.2"
+      ],
+      "links": {
+        "repo": "https://github.com/psmux/omp-manager",
+        "crates_io": "https://crates.io/crates/omp-manager",
+        "chocolatey": "https://community.chocolatey.org/packages/omp-manager"
+      },
+      "existing_media": [
+        "https://raw.githubusercontent.com/psmux/omp-manager/master/screenshot.png"
+      ],
+      "search_keywords": [
+        "oh my posh setup",
+        "oh my posh themes preview",
+        "install oh my posh windows",
+        "powershell prompt theme",
+        "nerd font install windows",
+        "oh my posh manager",
+        "customize powershell prompt"
+      ],
+      "caveats": [
+        "Repo homepage field points to github.com/marlocarlo/omp-manager (redirect)."
+      ]
+    },
+    {
+      "repo": "Psroot",
+      "display_name": "Psroot",
+      "category": "terminal",
+      "one_liner": "Containers on Windows without Hyper-V, WSL or Docker, using AppContainer.",
+      "summary": "Psroot runs Docker style containers on Windows using kernel primitives that need no hardware virtualization: AppContainer, Job Objects and a process visibility shim. It works on cloud VMs and nested setups where Hyper-V and WSL2 cannot run, and its standard tier needs no admin rights. Linux (namespaces and cgroups) and macOS (sandbox-exec) backends give the same CLI.",
+      "platforms": [
+        "Windows 10 1809+ (x86_64, primary)",
+        "Linux",
+        "macOS"
+      ],
+      "language": "Rust",
+      "license": "MIT (stated in README; no LICENSE file in the repo, GitHub detects none)",
+      "stars": 14,
+      "forks": 1,
+      "latest_release": null,
+      "created_at": "2026-04-19",
+      "pushed_at": "2026-07-18",
+      "install": [
+        {
+          "method": "From source",
+          "command": "git clone https://github.com/psmux/Psroot.git\ncd Psroot\ncargo build --release"
+        }
+      ],
+      "first_run": "psroot shell",
+      "key_features": [
+        "Filesystem isolation through AppContainer, the sandbox Chrome and Edge use",
+        "Process visibility isolation: the container sees only its own process tree",
+        "Network modes: none (default), outbound, full",
+        "35+ host environment variables replaced so paths and usernames do not leak",
+        "Memory, CPU and process count limits via Job Objects; Docker style create, start, exec, stop, rm",
+        "Tool provisioning: --tool node, rust-bin, winget"
+      ],
+      "proof_points": [
+        "66 built in isolation tests (psroot test all)",
+        "About 2 MB binary; README states under one second startup",
+        "Standard tier needs no admin and no VT-x",
+        "14 stars, 1 fork"
+      ],
+      "links": {
+        "repo": "https://github.com/psmux/Psroot",
+        "docs": "https://github.com/psmux/Psroot/tree/master/docs",
+        "cli_reference": "https://github.com/psmux/Psroot/blob/master/docs/cli-reference.md"
+      },
+      "existing_media": [],
+      "search_keywords": [
+        "docker without hyper-v",
+        "docker without vt-x",
+        "containers without virtualization windows",
+        "windows sandbox command line",
+        "run untrusted script isolated windows",
+        "appcontainer sandbox",
+        "windows containers no admin",
+        "ci isolation windows runner"
+      ],
+      "caveats": [
+        "No releases exist, yet docs/installation.md says to download psroot.exe from Releases. Only build from source works.",
+        "Not on crates.io.",
+        "No LICENSE file."
+      ]
+    },
+    {
+      "repo": "tmuxtop",
+      "display_name": "TmuxTop",
+      "category": "terminal",
+      "one_liner": "Top style monitor for tmux sessions, with backup and restore.",
+      "summary": "TmuxTop is a Python curses tool that lists the processes running in each tmux session, window and pane with their CPU and memory use. It can export that data to JSON and write a shell script that rebuilds the current tmux sessions later. It is the oldest repo on the account, from July 2024.",
+      "platforms": [
+        "Any system with tmux and Python 3 (README does not name platforms)"
+      ],
+      "language": "Python",
+      "license": "MIT",
+      "stars": 2,
+      "forks": 0,
+      "latest_release": {
+        "tag": "v0.1",
+        "date": "2024-07-22"
+      },
+      "created_at": "2024-07-22",
+      "pushed_at": "2026-10-07",
+      "install": [
+        {
+          "method": "Dependencies (as written in README)",
+          "command": "pip install psutil curses argparse",
+          "warning": "curses and argparse ship with Python and are not pip packages; this line will likely error on argparse/curses. Safer to show 'pip install psutil'. Not tested here."
+        },
+        {
+          "method": "Run",
+          "command": "python tmuxtop.py"
+        }
+      ],
+      "key_features": [
+        "Live CPU and memory per process inside tmux panes",
+        "Navigate sessions, windows and panes",
+        "Export to tmuxtop_export.json (--export or e)",
+        "Back up sessions to a shell script (--backup or b) and restore them (--restore or r)"
+      ],
+      "proof_points": [
+        "2 stars",
+        "Oldest project on the account (2024-07-22)",
+        "Has its own GitHub Pages site at https://psmux.github.io/tmuxtop/"
+      ],
+      "links": {
+        "repo": "https://github.com/psmux/tmuxtop",
+        "homepage": "https://psmux.github.io/tmuxtop/"
+      },
+      "existing_media": [
+        "https://github.com/user-attachments/assets/af7dccdc-bbec-4fa5-a154-08b0bfd29815"
+      ],
+      "media_note": "Only image is a GitHub user-attachments URL (PNG, 22 KB, returns 200), not a raw.githubusercontent URL. Better to copy it into the site than hotlink.",
+      "search_keywords": [
+        "tmux process monitor",
+        "tmux top",
+        "tmux session backup restore",
+        "save tmux sessions",
+        "tmux cpu usage per pane"
+      ],
+      "caveats": [
+        "Repo homepage field is https://marlocarlo.github.io/tmuxtop/, which returns 404. The live page is https://psmux.github.io/tmuxtop/."
+      ]
+    }
+  ],
+  "plumbing": [
+    {
+      "repo": "portable-pty-patched",
+      "what": "Patched copy of wezterm's portable-pty 0.9.0 that passes the ConPTY flags psmux needs (PASSTHROUGH_MODE on Windows 11 22H2+, WIN32_INPUT_MODE, RESIZE_QUIRK).",
+      "published_as": "crates.io portable-pty-psmux 0.9.7, 4,950 downloads",
+      "stars": 3,
+      "link": "https://github.com/psmux/portable-pty-patched"
+    },
+    {
+      "repo": "vt100-rust-patched",
+      "what": "GitHub fork of doy/vt100-rust with psmux patches: CSI s/u/f/n cursor save and restore, blink, hidden and strikethrough SGR.",
+      "published_as": "crates.io vt100-psmux 0.16.10, 3,319 downloads",
+      "stars": 1,
+      "link": "https://github.com/psmux/vt100-rust-patched",
+      "note": "This is a fork. The brief lists it under plumbing; vt100-rust-patched-old stays excluded."
+    },
+    {
+      "repo": "scoop-psmux",
+      "what": "Scoop bucket for psmux (psmux.exe, pmux.exe, tmux.exe).",
+      "published_as": "manifest version 3.3.8",
+      "stars": 5,
+      "link": "https://github.com/psmux/scoop-psmux"
+    },
+    {
+      "repo": "scoop-terminalmap",
+      "what": "Scoop bucket for TerminalMap.",
+      "published_as": "manifest version 0.1.0",
+      "stars": 0,
+      "link": "https://github.com/psmux/scoop-terminalmap"
+    },
+    {
+      "repo": "scoop-tmuxpanel",
+      "what": "Scoop bucket for Tmux Plugin Panel.",
+      "published_as": "manifest version 0.1.1",
+      "stars": 1,
+      "link": "https://github.com/psmux/scoop-tmuxpanel"
+    },
+    {
+      "repo": "scoop-omp-manager",
+      "what": "Scoop bucket for OMP Manager.",
+      "published_as": "manifest version 0.1.2",
+      "stars": 1,
+      "link": "https://github.com/psmux/scoop-omp-manager"
+    },
+    {
+      "repo": "apt-repo",
+      "what": "Signed APT repository for TerminalMap, served by GitHub Pages at https://psmux.github.io/apt-repo/.",
+      "published_as": "terminalmap_0.1.0-1_amd64.deb",
+      "stars": 0,
+      "link": "https://github.com/psmux/apt-repo"
+    }
+  ],
+  "totals": {
+    "featured_stars": 4335,
+    "plumbing_stars": 11,
+    "featured_plus_plumbing_stars": 4346,
+    "note": "Excludes forks of other people's projects and vt100-rust-patched-old. Star counts change; the site refreshes them live."
+  }
+}
