@@ -1,0 +1,246 @@
+{
+  "psmux": [
+    {
+      "type": "video",
+      "src": "media/psmux/demo.mp4",
+      "webm": "media/psmux/demo.webm",
+      "poster": "media/psmux/demo.jpg",
+      "width": 720,
+      "height": 432,
+      "duration": 10.8,
+      "alt": "psmux running in Windows Terminal: a session split into panes running pstop, psnet and a PowerShell directory listing, then the session chooser, then panes running Codex, Claude Code and Gemini CLI side by side.",
+      "source": "repo README",
+      "hero": true
+    },
+    {
+      "type": "image",
+      "src": "media/psmux/social-card.png",
+      "webp": "media/psmux/social-card.webp",
+      "width": 1280,
+      "height": 640,
+      "alt": "psmux social card: the psmux wordmark over a terminal window graphic with the line Terminal Multiplexer for Windows.",
+      "source": "repo .github/social-card.png"
+    }
+  ],
+  "DeskVNC": [
+    {
+      "type": "image",
+      "src": "media/DeskVNC/agent.jpg",
+      "webp": "media/DeskVNC/agent.webp",
+      "width": 1600,
+      "height": 1134,
+      "alt": "DeskVNC session on a remote KDE desktop with a terminal window open, and a bar along the bottom showing one AI agent driving two machines at once.",
+      "source": "repo README",
+      "credit": "Remote desktops shown inside the client are free licensed screenshots: Ubuntu 25.10 (Canonical, GPL), Kubuntu 23.10 (Kubuntu Community, GPL), CachyOS KDE (Peter Jung and the CachyOS team, GPL), via Wikimedia Commons. Other library tiles are drawings; host names are invented. See docs/images/CREDITS.md in psmux/DeskVNC.",
+      "hero": true
+    },
+    {
+      "type": "image",
+      "src": "media/DeskVNC/library.png",
+      "webp": "media/DeskVNC/library.webp",
+      "width": 1600,
+      "height": 1134,
+      "alt": "DeskVNC host library: a grid of saved machines with live thumbnails, groups and tags in the sidebar, and a connect bar at the top.",
+      "source": "repo README",
+      "credit": "Remote desktops shown inside the client are free licensed screenshots: Ubuntu 25.10 (Canonical, GPL), Kubuntu 23.10 (Kubuntu Community, GPL), CachyOS KDE (Peter Jung and the CachyOS team, GPL), via Wikimedia Commons. Other library tiles are drawings; host names are invented. See docs/images/CREDITS.md in psmux/DeskVNC."
+    },
+    {
+      "type": "image",
+      "src": "media/DeskVNC/session.jpg",
+      "webp": "media/DeskVNC/session.webp",
+      "width": 1600,
+      "height": 1086,
+      "alt": "A live VNC session in DeskVNC showing a remote Linux desktop with the floating toolbar.",
+      "source": "repo README",
+      "credit": "Remote desktops shown inside the client are free licensed screenshots: Ubuntu 25.10 (Canonical, GPL), Kubuntu 23.10 (Kubuntu Community, GPL), CachyOS KDE (Peter Jung and the CachyOS team, GPL), via Wikimedia Commons. Other library tiles are drawings; host names are invented. See docs/images/CREDITS.md in psmux/DeskVNC."
+    },
+    {
+      "type": "image",
+      "src": "media/DeskVNC/split.png",
+      "webp": "media/DeskVNC/split.webp",
+      "width": 1600,
+      "height": 676,
+      "alt": "Two remote desktops side by side in one DeskVNC window: Ubuntu GNOME on the left, Kubuntu KDE on the right.",
+      "source": "repo README",
+      "credit": "Remote desktops shown inside the client are free licensed screenshots: Ubuntu 25.10 (Canonical, GPL), Kubuntu 23.10 (Kubuntu Community, GPL), CachyOS KDE (Peter Jung and the CachyOS team, GPL), via Wikimedia Commons. Other library tiles are drawings; host names are invented. See docs/images/CREDITS.md in psmux/DeskVNC."
+    }
+  ],
+  "GodwinMix": [
+    {
+      "type": "video",
+      "src": "media/GodwinMix/live-switching.mp4",
+      "webm": "media/GodwinMix/live-switching.webm",
+      "poster": "media/GodwinMix/live-switching.jpg",
+      "width": 1600,
+      "height": 900,
+      "duration": 17.4,
+      "alt": "The GodwinMix web UI in a browser, mixing four live RTMP test sources (SMPTE bars, an ffmpeg test pattern, a moving gradient and a cellular automaton). Each source is picked into Preview and taken to Programme in turn while one RTMP destination stays live.",
+      "source": "fresh capture",
+      "credit": "Recorded from a local GodwinMix release build on macOS (Apple Silicon, VideoToolbox hardware encode) against a local mediamtx server. All sources are ffmpeg generated test signals.",
+      "hero": true
+    },
+    {
+      "type": "image",
+      "src": "media/GodwinMix/mixer-ui.png",
+      "webp": "media/GodwinMix/mixer-ui.webp",
+      "width": 1600,
+      "height": 900,
+      "alt": "GodwinMix web UI: Preview showing the four camera multiview, the TAKE and CUT buttons with Fade, Wipe and Dip transitions, Programme on Camera 1, and the Scenes, Sources and Graphics panels below.",
+      "source": "fresh capture",
+      "credit": "Local GodwinMix build, ffmpeg generated test sources."
+    }
+  ],
+  "pstop": [
+    {
+      "type": "video",
+      "src": "media/pstop/pstop-demo.mp4",
+      "webm": "media/pstop/pstop-demo.webm",
+      "poster": "media/pstop/pstop-demo.jpg",
+      "width": 960,
+      "height": 576,
+      "duration": 35.0,
+      "alt": "pstop running in Windows Terminal: per core CPU bars, memory and swap meters, and a scrolling process list with tree view, sort menu and the F key toolbar along the bottom.",
+      "source": "repo README",
+      "hero": true
+    }
+  ],
+  "psnet": [
+    {
+      "type": "image",
+      "src": "media/psnet/psnet-dashboard.png",
+      "webp": "media/psnet/psnet-dashboard.webp",
+      "width": 1600,
+      "height": 780,
+      "alt": "psnet network monitor on Windows: download and upload graphs, a dashboard with current throughput, a live traffic table of processes, hosts, services and connection states, and a wire packet preview pane.",
+      "source": "repo README",
+      "hero": true
+    }
+  ],
+  "vigil": [
+    {
+      "type": "video",
+      "src": "media/vigil/vigil-views.mp4",
+      "webm": "media/vigil/vigil-views.webm",
+      "poster": "media/vigil/vigil-views.jpg",
+      "width": 1600,
+      "height": 900,
+      "duration": 40.2,
+      "alt": "vigil running in a Debian container on a lab host named lab-01, stepping through its views: command center, attack radar with a braille world map, alerts, doors (ports 22, 80 and 6379 exposed), network pulse, geography, topology and system.",
+      "source": "fresh capture",
+      "credit": "Built from psmux/vigil source and run as root in a throwaway Debian container with sshd, nginx and an unauthenticated Redis on 0.0.0.0. The SSH brute force entries are real failed logins made against the container from inside it, and outbound traffic is real HTTPS to public sites.",
+      "hero": true
+    },
+    {
+      "type": "image",
+      "src": "media/vigil/attack-radar.png",
+      "webp": "media/vigil/attack-radar.webp",
+      "width": 1600,
+      "height": 900,
+      "alt": "vigil Attack Radar view: 24 hour attack heatmap, SSH brute force counts, an attack origins world map, top attackers table and recent alerts.",
+      "source": "fresh capture"
+    },
+    {
+      "type": "image",
+      "src": "media/vigil/doors.png",
+      "webp": "media/vigil/doors.webp",
+      "width": 1600,
+      "height": 900,
+      "alt": "vigil Doors view: an exposure donut for 3 listening ports, firewall coverage, and rows for sshd on :22, nginx on :80 and redis-server on :6379 each marked EXPOSED.",
+      "source": "fresh capture"
+    }
+  ],
+  "TerminalMap": [
+    {
+      "type": "video",
+      "src": "media/TerminalMap/zoom-berlin.mp4",
+      "webm": "media/TerminalMap/zoom-berlin.webm",
+      "poster": "media/TerminalMap/zoom-berlin.jpg",
+      "width": 1280,
+      "height": 720,
+      "duration": 25.4,
+      "alt": "TerminalMap in a terminal, starting from the braille world map, turning on demo markers and zooming continuously into Europe and then Berlin until individual roads, lakes and suburbs such as Potsdam and Teltow are drawn in braille characters.",
+      "source": "fresh capture",
+      "credit": "terminalmap 0.1.0 installed with cargo install terminalmap, recorded with VHS on macOS. Map data from OpenStreetMap.",
+      "hero": true
+    },
+    {
+      "type": "video",
+      "src": "media/TerminalMap/marker-tour.mp4",
+      "webm": "media/TerminalMap/marker-tour.webm",
+      "poster": "media/TerminalMap/marker-tour.jpg",
+      "width": 1280,
+      "height": 720,
+      "duration": 27.0,
+      "alt": "TerminalMap marker tour: the camera flies from the world view to Berlin, then Paris, then towards London, with labelled markers and country borders drawn in braille.",
+      "source": "fresh capture",
+      "credit": "terminalmap 0.1.0, recorded with VHS. Map data from OpenStreetMap."
+    },
+    {
+      "type": "image",
+      "src": "media/TerminalMap/world-view.jpg",
+      "webp": "media/TerminalMap/world-view.webp",
+      "width": 1600,
+      "height": 584,
+      "alt": "TerminalMap world view rendered in braille characters with country labels and the key help bar.",
+      "source": "repo README"
+    }
+  ],
+  "Tmux-Plugin-Panel": [
+    {
+      "type": "image",
+      "src": "media/Tmux-Plugin-Panel/plugin-browser.png",
+      "webp": "media/Tmux-Plugin-Panel/plugin-browser.webp",
+      "width": 1600,
+      "height": 816,
+      "alt": "Tmux Plugin Panel on the Themes tab: a list of tmux theme plugins with star counts (tmux-powerline, Catppuccin, Dracula, Nord, Tokyo Night and others) and a detail pane for the selected plugin.",
+      "source": "repo README",
+      "hero": true
+    }
+  ],
+  "omp-manager": [
+    {
+      "type": "image",
+      "src": "media/omp-manager/dashboard.png",
+      "webp": "media/omp-manager/dashboard.webp",
+      "width": 1341,
+      "height": 634,
+      "alt": "Oh My Posh Manager dashboard: a Quick Actions menu with Quick Setup, Browse Themes, Install Fonts, Update Oh My Posh and Reset to Default.",
+      "source": "repo README",
+      "hero": true
+    }
+  ],
+  "tmuxtop": [
+    {
+      "type": "video",
+      "src": "media/tmuxtop/tmuxtop-live.mp4",
+      "webm": "media/tmuxtop/tmuxtop-live.webm",
+      "poster": "media/tmuxtop/tmuxtop-live.jpg",
+      "width": 1400,
+      "height": 760,
+      "duration": 19.3,
+      "alt": "tmuxtop listing three tmux sessions (dev, notes, web) with their windows, panes and processes, live CPU and memory graphs per process, and gzip and bzip2 jobs pinned near 100 percent CPU.",
+      "source": "fresh capture",
+      "credit": "tmuxtop.py from psmux/tmuxtop run on macOS against an isolated tmux server, recorded with VHS.",
+      "hero": true
+    },
+    {
+      "type": "image",
+      "src": "media/tmuxtop/readme-screenshot.png",
+      "webp": "media/tmuxtop/readme-screenshot.webp",
+      "width": 1409,
+      "height": 348,
+      "alt": "tmuxtop showing one tmux session with two windows, per pane processes and CPU and memory columns.",
+      "source": "repo README"
+    }
+  ],
+  "missing": [
+    {
+      "repo": "psmux-plugins",
+      "reason": "No screenshots, GIFs or videos in the repo or README. The plugins run inside psmux on Windows only, so no fresh capture was possible on this Mac."
+    },
+    {
+      "repo": "Psroot",
+      "reason": "No media in the repo. On macOS the binary hands off to a Lima Linux VM that builds Psroot from a local source checkout, so a short fresh capture was not practical; the Windows AppContainer mode cannot run here."
+    }
+  ]
+}
