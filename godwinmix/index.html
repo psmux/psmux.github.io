@@ -151,7 +151,7 @@
         <div class="media-slot" data-media="GodwinMix" data-variant="feature" data-eager>
           <div class="frame">
             <div class="ph">
-              <div class="ph-bar"><b>GodwinMix</b><span>capture pending</span></div>
+              <div class="ph-bar"><b>GodwinMix</b><span>quick start</span></div>
 <pre><span class="pr">$ </span>git clone https://github.com/psmux/GodwinMix &amp;&amp; cd GodwinMix
 <span class="pr">$ </span>docker compose -f deploy/docker/docker-compose.yml up -d --build
 
@@ -164,7 +164,8 @@
         <div class="prose">
         <h2>Switching without dropping the stream</h2>
         <p>GodwinMix takes several sources, puts one on programme at a time, and sends programme to one or more RTMP destinations. Switching happens upstream on raw video and audio, so the encoder that feeds your destinations never restarts. Sources can be added, removed or fail while the output keeps going.</p>
-        <h2>One binary, one port</h2>
+        <!-- GODWIN: rewrite in your voice (heading) -->
+        <h2>A single binary with an HTTP API</h2>
         <p>It is a single Rust binary on GStreamer with one HTTP port. The web UI, the desktop app, the <code>gmx</code> command line client and the MCP server all use the same public API, and <code>api_level 1</code> is frozen for breaking changes. That makes it scriptable from a shell and drivable by an AI agent with the same calls.</p><p>The project was called LiveboxMix until version 0.2.</p>
         <h2>Questions</h2>
         <h3>Is GodwinMix a headless OBS alternative?</h3>
@@ -182,8 +183,8 @@
 <span class="pr">$ </span>docker compose -f deploy/docker/docker-compose.yml up -d --build</code></pre>
           <p class="install-foot">The quickstart is timed in CI on every push and the job fails if it takes five minutes or more.</p></div>
 <div class="cmd" role="tabpanel" hidden><pre><code><span class="pr">$ </span>docker run -d --name godwinmix --shm-size 1g \
-<span class="pr">$ </span>  -p 127.0.0.1:8080:8080 -e GODWINMIX_TOKEN=&quot;$TOKEN&quot; \
-<span class="pr">$ </span>  ghcr.io/psmux/godwinmix:latest</code></pre></div>
+    -p 127.0.0.1:8080:8080 -e GODWINMIX_TOKEN=&quot;$TOKEN&quot; \
+    ghcr.io/psmux/godwinmix:latest</code></pre></div>
 <div class="cmd" role="tabpanel" hidden><pre><code>https://github.com/psmux/GodwinMix/releases/latest</code></pre>
           <p class="install-foot">.exe or .msi on Windows, .dmg on Apple Silicon, .deb and .AppImage on Linux.</p></div>
 <div class="cmd" role="tabpanel" hidden><pre><code><span class="pr">$ </span>brew install gstreamer

@@ -16,3 +16,10 @@ Every spot below is a value judgement or a personal statement rather than a fact
 * The hero terminal is an illustration drawn in HTML and is captioned as one. Its fake build log and pstop meters are not real output; if you would rather show the real psmux demo video in the hero once media/ is filled, swap the figure for a video.
 * Product pages (deskvnc/, godwinmix/, pstop/, psnet/) are factual only. Their FAQ answers paraphrase the READMEs. The DeskVNC FAQ says the app is free (MIT or Apache 2.0 source plus release builds); keep or drop that line as you prefer, since the README also mentions paid support, which the site does not mention.
 * Numbers that are snapshots (151,000+ release downloads, 48 contributors, 133,111 psmux downloads) were collected 2026-10-08 and do not update. Star counts update live.
+
+## Added in the review pass
+
+* pstop/index.html: the first heading was "htop, on Windows, in your terminal". It read like a three beat tagline, so it is now "What pstop shows". Marked with a GODWIN comment.
+* godwinmix/index.html: "One binary, one port" had the same rhythm problem. It is now "A single binary with an HTTP API". Marked with a GODWIN comment.
+* Media captions under the large frames are built from media/manifest.json: "From the project README." for README images, and the recording credit for captures made for this site. The DeskVNC desktop credits are shown in full because docs/images/CREDITS.md asks for them to travel with the images. Shorten if you like, but keep the credit.
+* The hero caption now links to the real psmux recording in the psmux section.

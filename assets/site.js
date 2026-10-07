@@ -105,7 +105,8 @@
       el.muted = true; el.loop = true; el.playsInline = true;
       el.setAttribute("muted", ""); el.setAttribute("playsinline", ""); el.setAttribute("loop", "");
       el.preload = "none";
-      if (it.poster) el.poster = resolve(it.poster);
+      // the poster is set by the observer when the video comes near the viewport
+      if (it.poster || it.posterWebp) el._poster = resolve(it.posterWebp || it.poster);
       if (it.alt) { el.setAttribute("aria-label", it.alt); el.setAttribute("role", "img"); }
       var sources = [];
       if (it.webm) sources.push({ src: resolve(it.webm), type: "video/webm" });
@@ -115,7 +116,7 @@
       if (opts && opts.controls) el.controls = true;
     } else {
       el = document.createElement("img");
-      el.src = resolve(it.src);
+      el.src = resolve(it.webp || it.src);
       el.alt = it.alt || "";
       el.decoding = "async";
       if (!(opts && opts.eager)) el.loading = "lazy";
@@ -123,6 +124,14 @@
     if (it.width) el.width = it.width;
     if (it.height) el.height = it.height;
     return el;
+  }
+
+  function captionFor(it) {
+    if (it.source === "fresh capture" && it.credit) return it.credit;
+    var src = it.source === "fresh capture" ? "Recorded for this site."
+      : it.source === "repo README" ? "From the project README."
+      : it.source ? "Source: " + it.source + "." : "";
+    return (src + (it.credit ? " " + it.credit : "")).trim();
   }
 
   function fillSlot(slot, items) {
@@ -138,8 +147,8 @@
         var old = fig.querySelector("img, video");
         var el = buildMedia(items[i], { controls: false, eager: i === 0 && slot.hasAttribute("data-eager") });
         if (old) fig.replaceChild(el, old); else fig.insertBefore(el, fig.firstChild);
-        cap.textContent = items[i].source ? "Source: " + items[i].source : "";
-        cap.hidden = !items[i].source;
+        cap.textContent = captionFor(items[i]);
+        cap.hidden = !cap.textContent;
         watchVideo(el, slot);
       };
       fig.appendChild(cap);
@@ -157,7 +166,7 @@
           b.setAttribute("aria-label", "Show: " + (it.alt || ("item " + (i + 1))));
           if (it.type === "image" || it.poster) {
             var t = document.createElement("img");
-            t.src = resolve(it.type === "image" ? it.src : it.poster);
+            t.src = resolve(it.type === "image" ? (it.webp || it.src) : (it.posterWebp || it.poster));
             t.alt = ""; t.loading = "lazy"; t.width = 120; t.height = 68;
             b.appendChild(t);
           } else {
@@ -171,6 +180,7 @@
           strip.appendChild(b);
         });
         slot.appendChild(strip);
+        slot.appendChild(cap); // caption and credits go under the thumbnails
       }
     } else {
       var el = buildMedia(items[0], {});
@@ -195,10 +205,17 @@
     v.load();
   }
 
+  function setPoster(v) { if (v._poster && !v.poster) v.poster = v._poster; }
+
+  var posterIO = ("IntersectionObserver" in window) ? new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { setPoster(e.target); posterIO.unobserve(e.target); } });
+  }, { rootMargin: "900px 0px" }) : null;
+
   var videoIO = ("IntersectionObserver" in window) ? new IntersectionObserver(function (entries) {
     entries.forEach(function (e) {
       var v = e.target;
       if (e.isIntersecting) {
+        setPoster(v);
         attachSources(v);
         if (!reduceMotion) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
       } else if (!v.paused) {
@@ -209,6 +226,7 @@
 
   function watchVideo(el, hoverRoot) {
     if (el.tagName !== "VIDEO") return;
+    if (posterIO) posterIO.observe(el); else setPoster(el);
     if (videoIO) videoIO.observe(el); else attachSources(el);
     if (reduceMotion && hoverRoot) {
       var play = function () { attachSources(el); var p = el.play(); if (p && p.catch) p.catch(function () {}); };

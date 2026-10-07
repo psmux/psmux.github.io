@@ -10,7 +10,8 @@
       "duration": 10.8,
       "alt": "psmux running in Windows Terminal: a session split into panes running pstop, psnet and a PowerShell directory listing, then the session chooser, then panes running Codex, Claude Code and Gemini CLI side by side.",
       "source": "repo README",
-      "hero": true
+      "hero": true,
+      "posterWebp": "media/psmux/demo.webp"
     },
     {
       "type": "image",
@@ -77,7 +78,8 @@
       "alt": "The GodwinMix web UI in a browser, mixing four live RTMP test sources (SMPTE bars, an ffmpeg test pattern, a moving gradient and a cellular automaton). Each source is picked into Preview and taken to Programme in turn while one RTMP destination stays live.",
       "source": "fresh capture",
       "credit": "Recorded from a local GodwinMix release build on macOS (Apple Silicon, VideoToolbox hardware encode) against a local mediamtx server. All sources are ffmpeg generated test signals.",
-      "hero": true
+      "hero": true,
+      "posterWebp": "media/GodwinMix/live-switching.webp"
     },
     {
       "type": "image",
@@ -101,7 +103,8 @@
       "duration": 35.0,
       "alt": "pstop running in Windows Terminal: per core CPU bars, memory and swap meters, and a scrolling process list with tree view, sort menu and the F key toolbar along the bottom.",
       "source": "repo README",
-      "hero": true
+      "hero": true,
+      "posterWebp": "media/pstop/pstop-demo.webp"
     }
   ],
   "psnet": [
@@ -128,7 +131,8 @@
       "alt": "vigil running in a Debian container on a lab host named lab-01, stepping through its views: command center, attack radar with a braille world map, alerts, doors (ports 22, 80 and 6379 exposed), network pulse, geography, topology and system.",
       "source": "fresh capture",
       "credit": "Built from psmux/vigil source and run as root in a throwaway Debian container with sshd, nginx and an unauthenticated Redis on 0.0.0.0. The SSH brute force entries are real failed logins made against the container from inside it, and outbound traffic is real HTTPS to public sites.",
-      "hero": true
+      "hero": true,
+      "posterWebp": "media/vigil/vigil-views.webp"
     },
     {
       "type": "image",
@@ -161,7 +165,8 @@
       "alt": "TerminalMap in a terminal, starting from the braille world map, turning on demo markers and zooming continuously into Europe and then Berlin until individual roads, lakes and suburbs such as Potsdam and Teltow are drawn in braille characters.",
       "source": "fresh capture",
       "credit": "terminalmap 0.1.0 installed with cargo install terminalmap, recorded with VHS on macOS. Map data from OpenStreetMap.",
-      "hero": true
+      "hero": true,
+      "posterWebp": "media/TerminalMap/zoom-berlin.webp"
     },
     {
       "type": "video",
@@ -173,7 +178,8 @@
       "duration": 27.0,
       "alt": "TerminalMap marker tour: the camera flies from the world view to Berlin, then Paris, then towards London, with labelled markers and country borders drawn in braille.",
       "source": "fresh capture",
-      "credit": "terminalmap 0.1.0, recorded with VHS. Map data from OpenStreetMap."
+      "credit": "terminalmap 0.1.0, recorded with VHS. Map data from OpenStreetMap.",
+      "posterWebp": "media/TerminalMap/marker-tour.webp"
     },
     {
       "type": "image",
@@ -221,7 +227,8 @@
       "alt": "tmuxtop listing three tmux sessions (dev, notes, web) with their windows, panes and processes, live CPU and memory graphs per process, and gzip and bzip2 jobs pinned near 100 percent CPU.",
       "source": "fresh capture",
       "credit": "tmuxtop.py from psmux/tmuxtop run on macOS against an isolated tmux server, recorded with VHS.",
-      "hero": true
+      "hero": true,
+      "posterWebp": "media/tmuxtop/tmuxtop-live.webp"
     },
     {
       "type": "image",
