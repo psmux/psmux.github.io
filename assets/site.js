@@ -335,6 +335,25 @@
 
   /* ---------- hero terminal (illustration) ---------- */
 
+  function initHeroVideo() {
+    var v = document.getElementById("hero-video");
+    if (!v) return;
+    if (reduceMotion) {
+      v.removeAttribute("autoplay");
+      v.pause();
+      v.controls = true;
+      return;
+    }
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+          else v.pause();
+        });
+      }, { threshold: 0.2 }).observe(v);
+    }
+  }
+
   function initTerm() {
     var term = document.getElementById("hero-term");
     if (!term) return;
@@ -496,6 +515,7 @@
     paintStars({});
     loadStars();
     loadMedia();
+    initHeroVideo();
     initTerm();
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot); else boot();

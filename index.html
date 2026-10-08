@@ -73,6 +73,7 @@
   ]
 }
 </script>
+  <link rel="preload" as="image" href="media/psmux/demo.webp" fetchpriority="high">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -128,23 +129,15 @@
     </div>
 
     <figure class="term-figure">
-      <div class="term" id="hero-term" aria-hidden="true">
-        <div class="term-chrome">
-          <span class="term-tab"><i></i>PowerShell</span><span>+</span>
-          <span class="spacer"></span>
-          <span class="ctl"><span></span><span></span><span></span></span>
-        </div>
-        <div class="term-screen">
-          <div class="panes" data-layout="1">
-            <div class="pane p0 active"><pre></pre></div>
-            <div class="pane p1"><pre></pre></div>
-            <div class="pane p2"><pre></pre></div>
-          </div>
-          <div class="tstatus"><span class="st-left">[work] <span class="w-active">0:pwsh*</span></span><span class="st-right">"DESKTOP" 14:02 08 Oct 26</span></div>
-          <div class="keys"><kbd>Ctrl</kbd>+<kbd>b</kbd> <kbd>%</kbd><span class="what">split-window -h</span></div>
-        </div>
+      <div class="term term-video">
+        <video id="hero-video" width="720" height="432" autoplay muted loop playsinline preload="auto"
+          poster="media/psmux/demo.webp"
+          aria-label="psmux running in Windows Terminal: a session split into panes running pstop, psnet and a PowerShell directory listing, then the session chooser, then panes running Codex, Claude Code and Gemini CLI side by side.">
+          <source src="media/psmux/demo.webm" type="video/webm">
+          <source src="media/psmux/demo.mp4" type="video/mp4">
+        </video>
       </div>
-      <figcaption class="term-caption">Illustration of a psmux session, drawn in HTML. <a href="#psmux">The real recording is below.</a></figcaption>
+      <figcaption class="term-caption">psmux on Windows 11. pstop, psnet and PowerShell in split panes, the session chooser, then Codex, Claude Code and Gemini CLI side by side.</figcaption>
     </figure>
   </div>
 </section>
@@ -164,7 +157,7 @@
 <section class="section" id="psmux" aria-labelledby="psmux-title">
   <div class="wrap feature">
     <div class="feature-media">
-      <div class="media-slot" data-media="psmux" data-variant="feature">
+      <div class="media-slot" data-variant="feature">
         <div class="frame">
           <div class="ph">
             <div class="ph-bar"><b>psmux</b><span>quick start</span></div>
